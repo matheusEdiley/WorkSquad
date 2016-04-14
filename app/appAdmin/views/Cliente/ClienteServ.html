@@ -1,0 +1,136 @@
+<div style="text-align: center" class="jumbotron">
+  <h2> Serviços disponíveis</h2>
+  <p></p>
+</div>
+<div class="container">
+  <div class="row" >
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="input-group">
+        <div class="input-group-btn search-panel">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span id="search_concept">{{ filtro }}</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="SelecionarFiltro('Palavras chave')">Palavras chave</a></li>
+            <li><a ng-click="SelecionarFiltro('Categoria')">Categoria</a></li>
+            <li><a ng-click="SelecionarFiltro('Disponibilidade')">Disponibilidade</a></li>
+            <li><a ng-click="SelecionarFiltro('Classificação')">Classificação</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="SelecionarFiltro('Prestador')">Prestador</a></li>
+
+          </ul>
+        </div>
+        <input type="hidden" name="search_param" value="all" id="search_param">
+        <input type="text" class="form-control" name="x" placeholder="Procurar por...">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<!--pricing tables 2-->
+<section class="container show-source" style="width: 99%">
+  <div class="row" >
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 1</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$200 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 2</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$103 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 3</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$100 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 4</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$200 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 5</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$103 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="text-center">Prestador 6</h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>$100 / Hora</strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 Suporte</li>
+        </ul>
+        <div class="panel-footer">
+          <a class="btn btn-lg btn-block btn-danger" href="#">Contratar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

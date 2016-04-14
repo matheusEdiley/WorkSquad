@@ -1,0 +1,207 @@
+<div>
+  {{ error }}
+</div>
+<div class="container">
+  <div class="row">
+    <section>
+      <div class="wizard">
+        <div class="wizard-inner">
+          <div class="connecting-line"></div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                <span class="round-tab">
+                  <i class="glyphicon glyphicon-user"></i>
+                </span>
+              </a>
+            </li>
+            <li role="presentation" class="disabled">
+              <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                <span class="round-tab">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+              </a>
+            </li>
+            <li role="presentation" class="disabled">
+              <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                <span class="round-tab">
+                  <i class="glyphicon glyphicon-education"></i>
+                </span>
+              </a>
+            </li>
+            <li role="presentation" class="disabled">
+              <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                <span class="round-tab">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <form role="form">
+          <div class="tab-content">
+            <div class="tab-pane active" role="tabpanel" id="step1">
+              <h3>Informações pessoais</h3>
+              <br />
+              <br />
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.nome" class="form-control " placeholder="Nome" tabindex="1">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.sobrenome" class="form-control " placeholder="Sobrenome" tabindex="2">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">CPF</span>
+                        <input type="search" ng-model="pre.cpf" class="form-control" ui-mask="999.999.999-99"  ui-mask-placeholder="_" ui-mask-placeholder-char="_" tabindex="3">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="email" ng-model="pre.email" class="form-control " placeholder="Email example@example.com" tabindex="4">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">Telefone</span>
+                        <input type="text" ng-model="pre.telefone" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" class="form-control" tabindex="5">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">Celular</span>
+                      <input type="text" ng-model="usu.celular" class="form-control" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" tabindex="6">
+                    </div>
+                  </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="password" ng-model="pre.senha" class="form-control " placeholder="Senha" tabindex="5">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="password" ng-model="pre.repearSenha" class="form-control " placeholder="Confirmação de senha" tabindex="6">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <ul class="list-inline pull-right">
+                <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+              </ul>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="step2">
+              <h3>Endereço</h3>
+              
+              <br />
+              <br />
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                  
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      
+                      
+                      <div class="input-group">
+                        
+                        <input type="text" ng-model="pre.cep" class="form-control" tabindex="5" placeholder="CEP">
+                        <span class="input-group-btn">
+                          <button ng-click="BuscarPrestEndereco(pre.cep)" style="margin-top: -0.8%" class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                      </div>
+                      
+                      
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.numero" class="form-control" placeholder="Número da residencia" tabindex="6">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.logradouro" class="form-control " placeholder="Rua" tabindex="5">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.bairro" placeholder="Bairro" class="form-control " tabindex="6">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.localidade" class="form-control " placeholder="Cidade" tabindex="5">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text" ng-model="pre.uf" placeholder="Estado" class="form-control " tabindex="6">
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div></div>
+                <ul class="list-inline pull-right">
+                  <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                  <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+                </ul>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="step3">
+                <h3>Formação e cursos</h3>
+                <br />
+                <br />
+                
+                <ul class="list-inline pull-right">
+                  <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                  <li><button type="button" class="btn btn-default next-step">Pular</button></li>
+                  <li><button type="button" class="btn btn-primary btn-info-full next-step">Próximo</button></li>
+                </ul>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="complete">
+                
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                      <form role="form">
+                        <h2>Finalize o cadastro<br /><small>  Por favor, confirme os dados e finalize o cadastro.</small></h2>
+                        <hr class="colorgraph">
+                        adadsadsdsads 
+                        <hr class="colorgraph">
+                        <div class="row">
+                          <div class="col-xs-12 col-md-6"><button ng-click="SalvarCadastro(usu)" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-ok"></i> Salvar</button></div>
+                          <div class="col-xs-12 col-md-6"><button ng-click="LimparCampos()" class="btn btn-danger btn-block btn-lg"><i class="glyphicon glyphicon-remove"></i>  Cancelar</button></div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
