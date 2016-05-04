@@ -54,6 +54,12 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
        
 	});
 
-mainApp.controller('appAdminCtrl', ['$scope', function ($scope) {
-	$scope.teste = "Funcionou";
+mainApp.controller('appAdminCtrl', ['$scope', '$state','verificar', function ($scope, $state, verificar) {
+	
+	$scope.nomeUsu = "Matheus Ediley";
+	
+	if(!verificar.estaLogado()) {
+    	$state.go("appPortal.Portal");
+	};
+
 }]);

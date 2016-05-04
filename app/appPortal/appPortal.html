@@ -1,8 +1,6 @@
 <div id="page-top" data-spy="scroll" data-target=".navbar-custom">
 	<!-- Preloader -->
-	<div id="preloader">
-		<div id="load"></div>
-	</div>
+	
 	<nav class="navbar navbar-fixed-top" style="padding: 20px 0; !important" role="navigation">
 		<div class="container">
 			<div class="navbar-header page-scroll">
@@ -75,6 +73,11 @@
 					<div style="padding-top:30px" class="panel-body" >
 						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 						
+						<div ng-if="!FlgLogin" class="alert alert-error fade in" style="margin-top:18px;" focus>
+							<a href="" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+							<strong>Inválido!</strong> Login ou senha inválido(s).
+						</div>
+
 						<form id="loginform" class="form-horizontal" role="form">
 							
 							<div style="margin-bottom: 25px" class="input-group">
@@ -84,7 +87,7 @@
 							
 							<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-								<input id="login-password" ng-model="usu.password" type="password" class="form-control" name="password" placeholder="senha">
+								<input id="login-password" ng-model="usu.senha" type="password" class="form-control" name="password" placeholder="senha">
 							</div>
 							
 							

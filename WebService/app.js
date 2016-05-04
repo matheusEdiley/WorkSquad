@@ -17,11 +17,13 @@ app.use('/app', function(req, res, next) {
 });
 
 //Inserir usuário
-app.post('/app/user', function(req, res) {
+app.post('/user', function(req, res) {
 	var login = req.body.login;
 	var senha = req.body.senha;
+	var email = req.body.email;
+	var tipo = req.body.tipo;
 	console.log("login: " + login);
-	UserController.save(login, senha, function(user) {
+	UserController.save(login, senha, email, tipo, function(user) {
 		res.json(user);
 	})
 });
@@ -35,7 +37,6 @@ app.get('/app/user', function(req, res) {
 				res.send("Ocorreu um erro no servidor. Contate o administrador.");
 			}
 			else if (users) {
-				console.log('caiu aqui');
 				res.send(users);
 			}
 		});
@@ -59,8 +60,8 @@ app.get('/app/user/remove', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
-	if ((req.param('login')) && (req.param('password'))) {
-		UserController.findByUserSenha(req.param('login'), req.param('password'), function(user) {
+	if ((req.param('login')) && (req.param('senha'))) {
+		UserController.findByUserSenha(req.param('login'), req.param('senha'), function(user) {
 			var token = jwt.sign({
 				foo: 'bar'
 			}, 'mykeytest');

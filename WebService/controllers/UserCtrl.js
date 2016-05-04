@@ -1,8 +1,8 @@
 var express = require('express')
 var User = require('../models/user')
 
-exports.save = function(login, senha, cb) {
-	User.save(login, senha, function(user){
+exports.save = function(login, senha, email, tipo, cb) {
+	User.save(login, senha, email, tipo, function(user){
 		return cb(user);
 	})
 }

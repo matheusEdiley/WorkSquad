@@ -3,10 +3,12 @@ var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
 
-exports.save = function(login, senha, cb) {
+exports.save = function(login, senha, email, tipo, cb) {
 	var userNew = new User({
 		"login": login,
-		"senha": senha
+		"senha": senha,
+		"email": email,
+		"tipo": tipo
 	});
 	userNew.save(function(err, user, count) {
 		if (err)
@@ -40,6 +42,7 @@ exports.findByUserSenha = function(login, senha, cb) {
 	User.findOne({
 		login: login,
 		senha: senha
+		
 	}, function(err, user) {
 		console.log(user);
 		return cb(user);

@@ -18,11 +18,11 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
 			templateUrl: "app/appPortal/appPortal.html",
 			controller: "appPortalCtrl"
 		})
-
 }])
 
+
 .factory('factory', ['$http', function($http) {
-    
+
 
 	function ValidarCPF(cpf) {
 
@@ -62,11 +62,34 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
 		return true;
 
 	}
- 
+
 	//var teste = 'TESTE';
 
 	return {
 		//teste: teste,
 		ValidarCPF: ValidarCPF
 	};
+}])
+
+.factory('verificar', ['$window', function($window) {
+	var usuarioToken = $window.sessionStorage.getItem('token');
+	var usuario = $window.sessionStorage.getItem('usuario');
+	usuario = angular.fromJson(usuario);
+	var logado = {};
+	return {
+		estaLogado: function() {
+			if (usuarioToken == null) {
+				return false;
+			} else {
+				return true;
+			}
+		},
+		status: {
+			token: usuarioToken,
+			usuario: usuario
+		}
+	}
+
 }]);
+
+

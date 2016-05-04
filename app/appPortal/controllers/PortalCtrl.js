@@ -9,8 +9,7 @@
 		var onError = function(error) {
 			$scope.error = error.data;
 		};
-
-
+		
 	}
 	mainApp.controller('PortalCtrl', PortalCtrl);
 }());

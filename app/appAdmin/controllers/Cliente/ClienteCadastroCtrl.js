@@ -39,18 +39,8 @@
     };
 
     $scope.SalvarCadastro = function(usu) {
-
       
       var a = $localStorage.token;
-      
-      usu.dataCadastro = new Date();
-      usu.cadStatus = 1;
-
-      usu.senha = CryptoJS.SHA1(usu.senha).toString();
-
-      $http.post('/addCliente', usu)
-        .then(onAddClienteCompleted, onError);
-      console.log(Cliente);
 
     };
 
