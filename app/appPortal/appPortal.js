@@ -20,40 +20,33 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-var mainApp = angular.module("MainApp");
-
-var appPortalCtrl = function($scope, factory, $http, $localStorage, $state, $window) {
-
-	$scope.FlgLogin = true;
-
+mainApp.controller('appPortalCtrl', ['$scope', 'factory', '$http', '$localStorage', '$state', '$window', 'growl', function ($scope, factory, $http, $localStorage, $state, $window, growl) {
+	
 	var onError = function(error) {
 		$scope.error = error.data;
 	};
 
 	var onLoginRealizado = function(callback) {
-        
-        //$('#myModal').modal('hide');
-        //$('body').removeClass('modal-open');
-	    $('.modal-backdrop').remove();
-        
-        $window.sessionStorage.setItem('token', callback.data.token);
-		
+
+		$('.modal-backdrop').remove();
+		$window.sessionStorage.setItem('token', callback.data.token);
 		$state.go("appAdmin.Main");
 	};
 
 
 	$scope.FazerLogin = function(usu) {
 		usu.senha = CryptoJS.SHA1(usu.senha).toString();
-		
+
 		$window.sessionStorage.setItem('usuario', angular.toJson(usu));
-		
+
 		$http.post('/login', usu)
 			.then(onLoginRealizado, onError);
-
-		$scope.FlgLogin = false;
+		
+		
 	};
 
-}
+}]);
 
 
-mainApp.controller('appPortalCtrl', appPortalCtrl);
+
+

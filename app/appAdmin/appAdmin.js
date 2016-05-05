@@ -54,8 +54,12 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
        
 	});
 
-mainApp.controller('appAdminCtrl', ['$scope', '$state','verificar', function ($scope, $state, verificar) {
+mainApp.controller('appAdminCtrl', ['$scope', '$state','verificar','growl', function ($scope, $state, verificar, growl) {
 	
+	growl.warning('This is warning message.', {
+			title: 'Warning!'
+		});
+
 	$scope.nomeUsu = "Matheus Ediley";
 	
 	if(!verificar.estaLogado()) {
