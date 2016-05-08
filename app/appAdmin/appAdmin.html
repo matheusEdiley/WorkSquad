@@ -1,108 +1,24 @@
-<div class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-    <header class="main-header">
-      <a href="../../index2.html" class="logo">
-        
-        <span class="logo-mini">WorkSquad</span>
-        
-        <span class="logo-lg"><b>Work</b>Squad</span>
-      </a>
-      <nav class="navbar navbar-static-top" role="navigation">
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <li class="dropdown user user-menu">
-              <a class="dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-user"></i>
-                <span class="hidden-xs">{{ nomeUsu }}</span>
-              </a>
-              <ul class="dropdown-menu">
-                
-                <li class="user-header">
-                  
-                  <p>
-                    {{ nomeUsu }}
-                    <small>Membro desde março de 2014</small>
-                  </p>
-                </li>
-                
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#ClienteCadastro" class="btn btn-default btn-flat">Dados Cadastrais</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sair</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="glyphicon glyphicon-gears"></i></a>
-            </li>
-          </ul>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">WORKSquad</a>
         </div>
-      </nav>
-    </header>
-    <aside class="main-sidebar">
-      <section class="sidebar">
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Buscar..." />
-            <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-            </span>
-          </div>
-        </form>
-        <ul class="sidebar-menu">
-          
-          <li>
-            <a ui-sref="appAdmin.Main" >
-              <i class="glyphicon glyphicon-credit-card"></i> Anuncios
-            </a>
-          </li>
-          <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-            <a href=""><i class="glyphicon glyphicon-user"></i> Clientes </a>
-          </li>
-          <ul class="sub-menu collapse" id="products">
-            <li class="active"><a ui-sref="appAdmin.ClienteCadastro"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Cadastro</a></li>
-            <li><a ui-sref="appAdmin.ClienteServ" ><i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;Serviços disponíveis</a></li>
-            <li><a ui-sref="appAdmin.ClienteSrvUtil"><i class="glyphicon glyphicon-wrench"></i>&nbsp;&nbsp;Serviços utilizados</a></li>
-          </ul>
-          
-          <li  data-toggle="collapse"  data-target="#productsP" class="collapsed active">
-            <a href=""> <i class="glyphicon glyphicon-cog"></i>Prestadores  </a>
-          </li>
-          
-          <ul class="sub-menu collapse" id="productsP">
-            <li class="active"><a ui-sref="appAdmin.PrestadorCadastro" ><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;Cadastro</a></li>
-            <li><a ui-sref="appAdmin.PrestadorCadServ" ><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Cadastro de serviços</a></li>
-            <li><a ui-sref="appAdmin.PrestadorServContr"><i class="glyphicon glyphicon-briefcase"></i>&nbsp;&nbsp;Serviços contratados</a></li>
-          </ul>
-          <li  data-toggle="collapse" data-target="#adm" class="collapsed active">
-            <a href=""><i class="glyphicon glyphicon-object-align-bottom"></i> Administração </a>
-          </li>
-          <ul class="sub-menu collapse" id="adm">
-            <li class="active"><a ui-sref="appAdmin.AdmGerenUsu" ><i class=" glyphicon glyphicon-hdd"></i>&nbsp;&nbsp;Gerenciamento de usuários</a></li>
-            
-          </ul>
-        </section>
-        
-      </aside>
-      <div class="content-wrapper">
-        
-        <section class="content-header">
-          
-          
-          <div style="text-align: center" ui-view>
-            
-          </div>
-          
-        </section>
-        
-        
-      </div>
-      
-      
-      
+        <div class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav" ng-repeat="item in Menu">
+                <li><a ui-sref="{{ item.Link }}">{{ item.Nome }}</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href=""><span class="label label-info">{{ Tipo }}</span></a></li>
+            </ul>
+        </div>
     </div>
-  </div>
+</div>
+<br /><br /><br />
+<div style="text-align: center" ui-view>
+    
+</div>

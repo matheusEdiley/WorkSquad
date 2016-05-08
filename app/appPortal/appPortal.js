@@ -20,8 +20,8 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-mainApp.controller('appPortalCtrl', ['$scope', 'factory', '$http', '$localStorage', '$state', '$window', 'growl', function ($scope, factory, $http, $localStorage, $state, $window, growl) {
-	
+mainApp.controller('appPortalCtrl', ['$scope', 'factory', '$http', '$localStorage', '$state', '$window', function($scope, factory, $http, $localStorage, $state, $window) {
+
 	var onError = function(error) {
 		$scope.error = error.data;
 	};
@@ -41,12 +41,7 @@ mainApp.controller('appPortalCtrl', ['$scope', 'factory', '$http', '$localStorag
 
 		$http.post('/login', usu)
 			.then(onLoginRealizado, onError);
-		
-		
+
 	};
 
 }]);
-
-
-
-

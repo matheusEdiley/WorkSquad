@@ -6,64 +6,73 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/appAdmin/Main");
 	//
 	// Now set up the states
-	$stateProvider
-		
+	$stateProvider.state('appAdmin.ClienteCadastro', {
+		url: "/ClienteCadastro",
+		templateUrl: "app/appAdmin/views/Cliente/ClienteCadastro.html",
+		controller: 'ClienteCadastroCtrl',
+		tipo: 'Cliente'
+	})
 
-		.state('appAdmin.ClienteCadastro', {
-			url: "/ClienteCadastro",
-			templateUrl: "app/appAdmin/views/Cliente/ClienteCadastro.html",
-			controller: 'ClienteCadastroCtrl'
-		})
-         
-		.state('appAdmin.ClienteServ', {
+	.state('appAdmin.ClienteServ', {
 			url: "/ClienteServ",
 			templateUrl: "app/appAdmin/views/Cliente/ClienteServ.html",
-			controller: 'ClienteServCtrl'
+			controller: 'ClienteServCtrl',
+			tipo: 'Cliente'
 		})
 		.state('appAdmin.ClienteSrvUtil', {
 			url: "/ClienteSrvUtil",
-			templateUrl: "app/appAdmin/views/Cliente/ClienteSrvUtil.html"
-			
+			templateUrl: "app/appAdmin/views/Cliente/ClienteSrvUtil.html",
+			tipo: 'Cliente'
+
 		})
 
-		.state('appAdmin.PrestadorCadastro', {
+	.state('appAdmin.PrestadorCadastro', {
 			url: "/PrestadorCadastro",
 			templateUrl: "app/appAdmin/views/Prestador/PrestadorCadastro.html",
-			controller: 'PrestadorCadastroCtrl'
+			controller: 'PrestadorCadastroCtrl',
+			tipo: 'Prestador'
 		})
 		.state('appAdmin.PrestadorCadServ', {
 			url: "/PrestadorCadServ",
-			templateUrl: "app/appAdmin/views/Prestador/PrestadorCadServico.html"
-		})
- 
-        .state('appAdmin.PrestadorServContr', {
-			url: "/PrestadorServContr",
-			templateUrl: "app/appAdmin/views/Prestador/PrestadorServContr.html"
+			templateUrl: "app/appAdmin/views/Prestador/PrestadorCadServico.html",
+			tipo: 'Prestador'
 		})
 
-		.state('appAdmin.AdmGerenUsu', {
-			url: "/AdmGerenUsu",
-			templateUrl: "app/appAdmin/views/Admin/AdmGerenUsu.html",
-			controller: 'AdmGerenUsuCtrl'
-		})
-        
-        .state('appAdmin.Main', {
-			url: "/Main",
-			templateUrl: "app/appAdmin/views/Main.html"
-		})
-       
-	});
+	.state('appAdmin.PrestadorServContr', {
+		url: "/PrestadorServContr",
+		templateUrl: "app/appAdmin/views/Prestador/PrestadorServContr.html",
+		tipo: 'Prestador'
+	})
 
-mainApp.controller('appAdminCtrl', ['$scope', '$state','verificar','growl', function ($scope, $state, verificar, growl) {
-	
-	growl.warning('This is warning message.', {
-			title: 'Warning!'
-		});
+	.state('appAdmin.AdmGerenUsu', {
+		url: "/AdmGerenUsu",	
+		templateUrl: "app/appAdmin/views/Admin/AdmGerenUsu.html",
+		controller: 'AdmGerenUsuCtrl',
+		tipo: 'Administrador'
+	})
 
-	$scope.nomeUsu = "Matheus Ediley";
-	
-	if(!verificar.estaLogado()) {
-    	$state.go("appPortal.Portal");
-	};
+	.state('appAdmin.Main', {
+		url: "/Main",
+		templateUrl: "app/appAdmin/views/Main.html",
+		tipo: 'Administrador'
+	})
 
-}]);
+});
+
+mainApp.controller('appAdminCtrl', ['$scope', '$state', 'verificar', 'Menu', function($scope, $state, verificar, Menu) {
+
+		$scope.Tipo = "Cliente";
+		$scope.Menu = Menu.CriarMenu($scope.Tipo);
+
+	}])
+	// .run(function($scope, verificar) {
+	// 	$scope.$on("$locationChangeStart", function(event, next, current) {
+
+// 		if (!verificar.estaLogado()) {
+// 			$state.go("appPortal.Portal");
+// 		};
+
+// 		console.log(toUrl);
+// 	});
+// })
+;
