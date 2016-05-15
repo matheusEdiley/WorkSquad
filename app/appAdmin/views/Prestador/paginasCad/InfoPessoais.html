@@ -1,0 +1,66 @@
+<h3>Informações pessoais</h3>
+<br />
+<br />
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.nome" class="form-control " placeholder="Nome" tabindex="1">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.sobrenome" class="form-control " placeholder="Sobrenome" tabindex="2">
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="input-group">
+          <span class="input-group-addon">CPF</span>
+          <input type="search" ng-model="pre.cpf" class="form-control" ui-mask="999.999.999-99"  ui-mask-placeholder="_" ui-mask-placeholder-char="_" tabindex="3">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="email" ng-model="pre.email" class="form-control " placeholder="Email example@example.com" tabindex="4">
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="input-group">
+          <span class="input-group-addon">Telefone</span>
+          <input type="text" ng-model="pre.telefone" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" class="form-control" tabindex="5">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="input-group">
+          <span class="input-group-addon">Celular</span>
+          <input type="text" ng-model="usu.celular" class="form-control" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" tabindex="6">
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="password" ng-model="pre.senha" class="form-control " placeholder="Senha" tabindex="5">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="password" ng-model="pre.repearSenha" class="form-control " placeholder="Confirmação de senha" tabindex="6">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="list-inline pull-right">
+  <li><button type="button" class="btn btn-primary" ng-click="Next(1)">Próximo</button></li>
+</ul>

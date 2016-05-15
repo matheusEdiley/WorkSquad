@@ -1,0 +1,58 @@
+<h3>Endereço</h3>
+
+<br />
+<br />
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        
+        
+        <div class="input-group">
+          
+          <input type="text" ng-model="pre.cep" class="form-control" tabindex="5" placeholder="CEP">
+          <span class="input-group-btn">
+            <button ng-click="BuscarPrestEndereco(pre.cep)" style="margin-top: -0.8%" class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+          </span>
+        </div>
+        
+        
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.numero" class="form-control" placeholder="Número da residencia" tabindex="6">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.logradouro" class="form-control " placeholder="Rua" tabindex="5">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.bairro" placeholder="Bairro" class="form-control " tabindex="6">
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.localidade" class="form-control " placeholder="Cidade" tabindex="5">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-group">
+          <input type="text" ng-model="pre.uf" placeholder="Estado" class="form-control " tabindex="6">
+        </div>
+      </div>
+    </div>
+    
+  </div></div>
+  <ul class="list-inline pull-right">
+    <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+    <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+  </ul>
