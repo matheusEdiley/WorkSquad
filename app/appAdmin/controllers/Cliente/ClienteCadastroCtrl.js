@@ -4,7 +4,7 @@
 (function() {
   var mainApp = angular.module("MainApp");
 
-  var ClienteCadastroCtrl = function($scope, factory, $http, $localStorage) {
+  var ClienteCadastroCtrl = function($scope, validacao, $http, $localStorage) {
 
     $scope.FlgCPF = true;
     $scope.FlgSenha = "primary";
@@ -27,7 +27,7 @@
 
     $scope.ValidarCPF = function(cpf) {
 
-      $scope.FlgCPF = factory.ValidarCPF(cpf);
+      $scope.FlgCPF = validacao.ValidarCPF(cpf);
 
     };
 

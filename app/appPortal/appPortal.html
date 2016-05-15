@@ -24,7 +24,7 @@
 				<div class="panel panel-info" >
 					<div class="panel-heading">
 						<div class="panel-title">Login</div>
-						<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Esqueceu a senha?</a></div>
+						<!-- <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Esqueceu a senha?</a></div> -->
 					</div>
 					<div style="padding-top:30px" class="panel-body" >
 						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -51,7 +51,7 @@
 							<div style="margin-top:10px" class="form-group">
 								<!-- Button -->
 								<div class="col-sm-12 controls">
-									<a id="btn-login" ng-click="FazerLogin(usu)" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> &nbsp;Login  </a>
+									<a id="btn-login" ng-click="FazerLogin(usu)" class="btn btn-success" data-dismiss="modal"><i class="glyphicon glyphicon-ok"></i> &nbsp;Login  </a>
 									<a id="btn-fblogin" href="" class="btn btn-primary"><i class="glyphicon glyphicon-trash"></i>  &nbsp;Limpar</a>
 									<button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>&nbsp;Fechar</button>
 								</div>
@@ -60,7 +60,7 @@
 								<div class="col-md-12 control">
 									<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
 										Não tem uma conta?
-										<a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+										<a ui-sref="appPortal.UsuarioCadastro" data-dismiss="modal">
 											Cadastre-se aqui!
 										</a>
 									</div>

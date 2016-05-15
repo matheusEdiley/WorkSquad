@@ -4,7 +4,7 @@
 (function() {
 	var mainApp = angular.module("MainApp");
 
-	var UsuarioCadastroCtrl = function($scope, factory, $http) {
+	var UsuarioCadastroCtrl = function($scope, $http) {
         
         $scope.FlgSenha = true;
 		var onError = function(error) {

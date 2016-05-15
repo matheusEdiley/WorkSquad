@@ -3,7 +3,7 @@
 (function() {
     var mainApp = angular.module("MainApp");
 
-    var PrestadorCadastroCtrl = function($scope, factory, $http) {
+    var PrestadorCadastroCtrl = function($scope, validacao, $http) {
 
 
         /**

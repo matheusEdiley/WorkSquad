@@ -61,16 +61,16 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-mainApp.controller('appAdminCtrl', ['$scope', '$state', 'verificar', 'Menu', function($scope, $state, verificar, Menu) {
+mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', function($scope, $state, autenticar, menu) {
 
 		$scope.Tipo = "Cliente";
-		$scope.Menu = Menu.CriarMenu($scope.Tipo);
+		$scope.Menu = menu.CriarMenu($scope.Tipo);
 
 	}])
-	// .run(function($scope, verificar) {
+	// .run(function($scope, autenticar) {
 	// 	$scope.$on("$locationChangeStart", function(event, next, current) {
 
-// 		if (!verificar.estaLogado()) {
+// 		if (!autenticar.estaLogado()) {
 // 			$state.go("appPortal.Portal");
 // 		};
 

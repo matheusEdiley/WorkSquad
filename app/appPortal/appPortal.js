@@ -20,7 +20,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-mainApp.controller('appPortalCtrl', ['$scope', 'factory', '$http', '$localStorage', '$state', '$window', function($scope, factory, $http, $localStorage, $state, $window) {
+mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStorage', '$state', '$window', function($scope, validacao, $http, $localStorage, $state, $window) {
 
 	var onError = function(error) {
 		$scope.error = error.data;
