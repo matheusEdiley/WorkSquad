@@ -62,7 +62,12 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', function($scope, $state, autenticar, menu, $window) {
-		var usuario = $window.sessionStorage.getItem('usuario');
+		
+		if (!autenticar.estaLogado()) {
+ 			$state.go("appPortal.Portal");
+ 		};
+ 		
+		var usuario = angular.fromJson($window.sessionStorage.getItem('usuario'));
 		$scope.Tipo = usuario.tipo;
 		$scope.Menu = menu.CriarMenu($scope.Tipo);
 

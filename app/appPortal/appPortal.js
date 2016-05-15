@@ -27,14 +27,22 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 	};
 
 	var onLoginRealizado = function(callback) {
-		
+
 		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
 		$window.sessionStorage.setItem('token', callback.data.token);
 		$state.go("appAdmin.Main");
-	};
 
+	};
+    
+    $scope.LimparLogin = function(){
+
+    	$scope.usu.login = "";
+    	$scope.usu.senha = "";
+    	
+    };
 
 	$scope.FazerLogin = function(usu) {
+
 		usu.senha = CryptoJS.SHA1(usu.senha).toString();
 
 		$http.post('/login', usu)
