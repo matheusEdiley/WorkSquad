@@ -27,8 +27,8 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 	};
 
 	var onLoginRealizado = function(callback) {
-
-		$('.modal-backdrop').remove();
+		
+		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
 		$window.sessionStorage.setItem('token', callback.data.token);
 		$state.go("appAdmin.Main");
 	};
@@ -36,8 +36,6 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 
 	$scope.FazerLogin = function(usu) {
 		usu.senha = CryptoJS.SHA1(usu.senha).toString();
-
-		$window.sessionStorage.setItem('usuario', angular.toJson(usu));
 
 		$http.post('/login', usu)
 			.then(onLoginRealizado, onError);

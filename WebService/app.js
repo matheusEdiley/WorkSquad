@@ -67,7 +67,8 @@ app.post('/login', function(req, res) {
 			}, 'mykeytest');
 			res.json({
 				success: true,
-				token: token
+				token: token,
+				user: user
 			});
 		});
 	}
