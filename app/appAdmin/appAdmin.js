@@ -62,18 +62,18 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', function($scope, $state, autenticar, menu, $window) {
-		
-		if (!autenticar.estaLogado()) {
- 			$state.go("appPortal.Portal");
- 		};
- 		
-		var usuario = angular.fromJson($window.sessionStorage.getItem('usuario'));
-		$scope.Tipo = usuario.tipo;
-		$scope.Menu = menu.CriarMenu($scope.Tipo);
 
-	}])
-	// .run(function($scope, autenticar) {
-	// 	$scope.$on("$locationChangeStart", function(event, next, current) {
+	if (!autenticar.estaLogado()) {
+		$state.go("appPortal.Portal");
+	};
+
+	var usuario = autenticar.status.usuario;
+	$scope.Tipo = usuario.tipo;
+	$scope.Menu = menu.CriarMenu($scope.Tipo);
+
+}]);
+// .run(function($scope, autenticar) {
+// 	$scope.$on("$locationChangeStart", function(event, next, current) {
 
 // 		if (!autenticar.estaLogado()) {
 // 			$state.go("appPortal.Portal");
@@ -82,4 +82,3 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 // 		console.log(toUrl);
 // 	});
 // })
-;
