@@ -57,8 +57,6 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 		tipo: 'Administrador'
 	})
 
-
-
 });
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', function($scope, $state, autenticar, menu, $window) {
@@ -81,4 +79,4 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 
 // 		console.log(toUrl);
 // 	});
-// })
+// });

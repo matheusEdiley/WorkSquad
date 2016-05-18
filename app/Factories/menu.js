@@ -29,7 +29,7 @@ mainApp.factory('menu', [function() {
 					"Nome": "Cadastro de serviços",
 					"Link": "appAdmin.PrestadorCadServ"
 				}];
-			} else if (tipo == "Administrador") {
+			} else {
 				menu = [{
 					"Nome": "Gerência de usuários",
 					"Link": "appAdmin.AdmGerenUsu"

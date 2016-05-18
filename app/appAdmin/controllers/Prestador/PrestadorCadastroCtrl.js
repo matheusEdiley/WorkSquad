@@ -18,6 +18,7 @@
                 $scope.pre.localidade = data.localidade;
                 $scope.pre.uf = data.uf;
             });
+            
         };
     }
 

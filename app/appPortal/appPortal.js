@@ -33,13 +33,13 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 		$state.go("appAdmin.Main");
 
 	};
-    
-    $scope.LimparLogin = function(){
 
-    	$scope.usu.login = "";
-    	$scope.usu.senha = "";
-    	
-    };
+	$scope.LimparLogin = function() {
+
+		$scope.usu.login = "";
+		$scope.usu.senha = "";
+
+	};
 
 	$scope.FazerLogin = function(usu) {
 
