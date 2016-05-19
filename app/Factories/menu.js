@@ -24,7 +24,7 @@ mainApp.factory('menu', [function() {
 			} else if (tipo == "Prestador") {
 				menu = [{
 					"Nome": "Cadastro",
-					"Link": "appAdmin.PrestadorCadastro",
+					"Link": "appAdmin.PrestadorCadastro.InfoPessoais",
 					"Icone": "floppy-disk"
 				}, {
 					"Nome": "Serviços Contratados",

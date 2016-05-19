@@ -30,6 +30,7 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 
 		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
 		$window.sessionStorage.setItem('token', callback.data.token);
+		
 		$state.go("appAdmin.Main");
 
 	};

@@ -61,7 +61,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
 
-
+     //Verifica se a sessão ainda é válida
 	if (!autenticar.estaLogado()) {
 		$state.go("appPortal.Portal");
 	};
@@ -81,7 +81,7 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 
 	$scope.Logout = function() {
 
-        //$window.location.reload();
+        $window.sessionStorage.clear();
 		$state.go("appPortal.Portal");
         
 	};

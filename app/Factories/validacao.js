@@ -42,7 +42,7 @@ mainApp.factory('validacao', ['$http', function($http) {
 
 	}
 
-	//var teste = 'TESTE';
+	
 
 	return {
 		//teste: teste,
