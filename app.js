@@ -2,7 +2,8 @@
 angular.module('MainApp', [
 	'ui.router',
 	'ui.mask',
-	'ngStorage'
+	'ngStorage',
+	'unsavedChanges'
 
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {

@@ -54,12 +54,13 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 	.state('appAdmin.Main', {
 		url: "/Main",
 		templateUrl: "app/appAdmin/views/Main.html",
-		tipo: 'Administrador'
+		tipo: ''
 	})
 
 });
 
-mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', function($scope, $state, autenticar, menu, $window) {
+mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
+
 
 	if (!autenticar.estaLogado()) {
 		$state.go("appPortal.Portal");
@@ -67,16 +68,15 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 
 	var usuario = autenticar.status.usuario;
 	$scope.Tipo = usuario.tipo;
+
+	if ($state.current.tipo != '') {
+		//Verificar se o tipo de usuário tem acesso a essa página
+		if (usuario.tipo != $state.current.tipo) {
+			$state.go("appPortal.Portal");
+		};
+	};
+
+	//Criar o menu de acordo com o tipo de usuario
 	$scope.Menu = menu.CriarMenu($scope.Tipo);
 
 }]);
-// .run(function($scope, autenticar) {
-// 	$scope.$on("$locationChangeStart", function(event, next, current) {
-
-// 		if (!autenticar.estaLogado()) {
-// 			$state.go("appPortal.Portal");
-// 		};
-
-// 		console.log(toUrl);
-// 	});
-// });
