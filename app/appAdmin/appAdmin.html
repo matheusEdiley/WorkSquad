@@ -10,11 +10,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" ng-repeat="item in Menu">
-                <li><a ui-sref="{{ item.Link }}">{{ item.Nome }}</a></li>
+                <li><a ui-sref="{{ item.Link }}"><i class="glyphicon glyphicon-{{ item.Icone }}"></i> &nbsp;{{ item.Nome }}</a></li>
             </ul>
             <ul class="nav navbar-nav">
-                <li><a href=""><span class="label label-info">{{ Tipo }}</span></a></li>
+                <li><a ng-click="Logout()"><i class="glyphicon glyphicon-log-out"></i> &nbsp;Sair</a></li>
             </ul>
+
         </div>
     </div>
 </div>

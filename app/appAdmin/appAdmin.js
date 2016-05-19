@@ -79,4 +79,11 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 	//Criar o menu de acordo com o tipo de usuario
 	$scope.Menu = menu.CriarMenu($scope.Tipo);
 
+	$scope.Logout = function() {
+
+        //$window.location.reload();
+		$state.go("appPortal.Portal");
+        
+	};
+
 }]);

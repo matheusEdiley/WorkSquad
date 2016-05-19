@@ -10,24 +10,30 @@ mainApp.factory('menu', [function() {
 
 				menu = [{
 					"Nome": "Cadastro",
-					"Link": "appAdmin.ClienteCadastro"
+					"Link": "appAdmin.ClienteCadastro",
+					"Icone": "floppy-disk"
 				}, {
 					"Nome": "Serviços",
-					"Link": "appAdmin.ClienteServ"
+					"Link": "appAdmin.ClienteServ",
+					"Icone": "tasks"
 				}, {
 					"Nome": "Serviços Utilizados",
-					"Link": "appAdmin.ClienteSrvUtil"
+					"Link": "appAdmin.ClienteSrvUtil",
+					"Icone": "list-alt"
 				}];
 			} else if (tipo == "Prestador") {
 				menu = [{
 					"Nome": "Cadastro",
-					"Link": "appAdmin.PrestadorCadastro"
+					"Link": "appAdmin.PrestadorCadastro",
+					"Icone": "floppy-disk"
 				}, {
 					"Nome": "Serviços Contratados",
-					"Link": "appAdmin.PrestadorServContr"
+					"Link": "appAdmin.PrestadorServContr",
+					"Icone": "credit-card"
 				}, {
 					"Nome": "Cadastro de serviços",
-					"Link": "appAdmin.PrestadorCadServ"
+					"Link": "appAdmin.PrestadorCadServ",
+					"Icone": "wrench"
 				}];
 			} else {
 				menu = [{
