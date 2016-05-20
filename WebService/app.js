@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use('/app', function(req, res, next) {
 	auth.validaToken(req, res, next);
 });
-
+ 
 //Inserir usuário
 app.post('/user', function(req, res) {
 	var login = req.body.login;
@@ -76,4 +76,4 @@ app.post('/login', function(req, res) {
 
 app.listen(3000, function() {
 	console.log('Example app listening on port 3000!');
-});	
+});

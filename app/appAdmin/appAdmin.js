@@ -22,6 +22,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 		.state('appAdmin.ClienteSrvUtil', {
 			url: "/ClienteSrvUtil",
 			templateUrl: "app/appAdmin/views/Cliente/ClienteSrvUtil.html",
+			controller: 'ClienteSrvUtilCtrl',
 			tipo: 'Cliente'
 
 		})
