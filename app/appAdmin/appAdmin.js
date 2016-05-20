@@ -62,7 +62,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
 
-     //Verifica se a sessão ainda é válida
+	//Verifica se a sessão ainda é válida
 	if (!autenticar.estaLogado()) {
 		$state.go("appPortal.Portal");
 	};
@@ -77,14 +77,17 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 		};
 	};
 
+    $scope.Menu = [];
+	
 	//Criar o menu de acordo com o tipo de usuario
 	$scope.Menu = menu.CriarMenu($scope.Tipo);
 
 	$scope.Logout = function() {
 
-        $window.sessionStorage.clear();
+		$window.sessionStorage["usuario"] = null;
+		$window.sessionStorage["token"] = null;
 		$state.go("appPortal.Portal");
-        
+
 	};
 
 }]);

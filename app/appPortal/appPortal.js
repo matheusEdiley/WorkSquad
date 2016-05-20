@@ -27,6 +27,8 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 	};
 
 	var onLoginRealizado = function(callback) {
+        
+        CloseModal();
 
 		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
 		$window.sessionStorage.setItem('token', callback.data.token);
@@ -39,6 +41,12 @@ mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStor
 
 		$scope.usu.login = "";
 		$scope.usu.senha = "";
+
+	};
+
+	var CloseModal = function() {
+
+		$('.modal-backdrop').remove();
 
 	};
 
