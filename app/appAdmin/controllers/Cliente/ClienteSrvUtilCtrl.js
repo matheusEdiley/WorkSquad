@@ -2,12 +2,24 @@
 
 
 (function() {
-  var mainApp = angular.module("MainApp");
+	var mainApp = angular.module("MainApp");
 
-  var ClienteSrvUtilCtrl = function($scope) {
+	var ClienteSrvUtilCtrl = function($scope) {
 
-    
+		$scope.rating = 0;
+		$scope.ratings = [{
+			current: 5,
+			max: 10
+		}, {
+			current: 3,
+			max: 5
+		}];
 
-  }
-  mainApp.controller('ClienteSrvUtilCtrl', ClienteSrvUtilCtrl);
+		$scope.getSelectedRating = function(rating) {
+			console.log(rating);
+		}
+
+	}
+	
+	mainApp.controller('ClienteSrvUtilCtrl', ClienteSrvUtilCtrl);
 }());

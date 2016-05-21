@@ -3,6 +3,7 @@ angular.module('MainApp', [
 	'ui.router',
 	'ui.mask',
 	'ngStorage'
+
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	//$urlRouterProvider.otherwise('/appPortal/a');
