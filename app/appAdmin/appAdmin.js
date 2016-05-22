@@ -55,13 +55,16 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 	.state('appAdmin.Main', {
 		url: "/Main",
 		templateUrl: "app/appAdmin/views/Main.html",
+		controller: "MainCtrl",
 		tipo: ''
 	})
 
 });
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
-
+    
+    $scope.Menu = null;
+    
 	//Verifica se a sessão ainda é válida
 	if (!autenticar.estaLogado()) {
 		$state.go("appPortal.Portal");

@@ -79,6 +79,7 @@ app.post('/login', function(req, res) {
 });
 
 app.post('/app/cliente/', function(req, res){
+	
 	var cliente = ClienteController.getClienteSchema();
 	
 	cliente.nome = req.body.nome;
