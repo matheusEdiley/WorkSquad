@@ -43,6 +43,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 	.state('appAdmin.PrestadorServContr', {
 		url: "/PrestadorServContr",
 		templateUrl: "app/appAdmin/views/Prestador/PrestadorServContr.html",
+		controller: "PrestadorServContrCtrl",
 		tipo: 'Prestador'
 	})
 
@@ -63,9 +64,9 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
-    
-    $scope.Menu = null;
-    
+
+	$scope.Menu = null;
+
 	//Verifica se a sessão ainda é válida
 	if (!autenticar.estaLogado()) {
 		$state.go("appPortal.Portal");
@@ -81,8 +82,8 @@ mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$
 		};
 	};
 
-    $scope.Menu = [];
-	
+	$scope.Menu = [];
+
 	//Criar o menu de acordo com o tipo de usuario
 	$scope.Menu = menu.CriarMenu($scope.Tipo);
 

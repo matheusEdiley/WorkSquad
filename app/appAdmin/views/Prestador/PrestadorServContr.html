@@ -1,79 +1,41 @@
 <div style="text-align: center" class="jumbotron">
-        <h2> Serviços Contratados</h2>
-        <p></p>
-    </div>
-<div style="width: 70%; padding: 1%">
+    <h2> Serviços Contratados</h2>
+    <p></p>
+</div>
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     
-    <div class="row" style="margin-left: -21.5%">
-        <div class="col-xs-8 col-xs-offset-2">
-            <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span id="search_concept">Filtrar por</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="">Palavras chave</a></li>
-                        <li><a href="">Categoria</a></li>
-                        <li><a href="">Disponibilidade</a></li>
-                        <li><a href="">Classificação</a></li>
-                        <li class="divider"></li>
-                    </ul>
+    <div class="row mt">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><b>Serviços que foram contratados</b></div>
+                <div class="panel-body">
+                    
+                    <div class="content-panel">
+                        <table class="table table-striped table-advance table-hover">
+                            <thead>
+                                <tr>
+                                    <th> Serviço</th>
+                                    <th class="hidden-phone"> Valor </th>
+                                    <th> Pontos </th>
+                                    <th> Quantidade</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="servico in servicos">
+                                    <td><a href="#">{{ servico.nome }}</a></td>
+                                    <td class="hidden-phone">{{ servico.valor }}</td>
+                                    <td>{{ servico.pontos }}</td>
+                                    <td><span class="label label-info label-mini">{{ servico.quantidade }}</span>
+                                    
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" style="margin-top: 0.9%" class="form-control" name="x" placeholder="Procurar por...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
             </div>
         </div>
     </div>
-    <br />
-    <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Nome do contratante</th>
-                <th>Serviço</th>
-                <th>Valor arrecadado total</th>
-                <th>Clientes(Quantidade)</th>
-                <th>Pontos arrecadados</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>$320,800</td>
-                <td>
-                    13
-                    
-                </td>
-                <td>12
-                </td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>$170,750</td>
-                <td>
-                    10
-                </td>
-                <td>
-                    65
-                </td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Desenvolvimento</td>
-                <td>$170,750</td>
-                <td>
-                    
-                    73
-                </td>
-                <td>
-                    3
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
+</div>
+</div>
