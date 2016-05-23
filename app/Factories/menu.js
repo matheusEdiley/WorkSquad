@@ -27,7 +27,7 @@ mainApp.factory('menu', [function() {
 					"Link": "appAdmin.PrestadorCadastro.InfoPessoais",
 					"Icone": "floppy-disk"
 				}, {
-					"Nome": "Serviços Contratados",
+					"Nome": "Meus serviços contratados",
 					"Link": "appAdmin.PrestadorServContr",
 					"Icone": "credit-card"
 				}, {

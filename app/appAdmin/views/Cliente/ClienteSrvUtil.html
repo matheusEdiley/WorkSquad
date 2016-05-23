@@ -1,4 +1,66 @@
-<span ng-repeat="rating in ratings">{{rating.current}} out of
-	{{rating.max}}
-	<div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-</span>	
+<!-- <span ng-repeat="rating in ratings">{{rating.current}} out of
+							{{rating.max}}
+							<div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+</span>	 -->
+<div style="text-align: center" class="jumbotron ng-scope">
+	<h2> Serviços utilizados</h2>
+	<p></p>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-4 col-sm-8">
+			<div class="row">
+				<div class="col-xs-4 theader free">
+					<div class="ptitle">Grátis </div>
+				</div>
+				<div class="col-xs-4 theader standard">
+					<div class="ptitle">Em domicilio</div>
+					
+				</div>
+				<div class="col-xs-4 theader premium" style="height: 48px">
+					<div class="ptitle">Classificação</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row feature">
+		<div class="col-xs-12 col-sm-4 cfeature infos">
+			José - Carpinteiro
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 ccfreature free">
+					<i class="fa fa-check iconok"></i>
+				</div>
+				<div class="col-xs-4 col-sm-4 ccfreature standard">
+					<i class="fa fa-check iconok"></i>
+				</div>
+				<div class="col-xs-4 col-sm-4 ccfreature premium">
+					<span ng-repeat="rating in ratings">
+						<div ng-model="rating1" star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="row feature">
+		<div class="col-xs-12 col-sm-4 cfeature infos">
+			José - Carpinteiro
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 ccfreature free">
+					<i class="fa fa-check iconok"></i>
+				</div>
+				<div class="col-xs-4 col-sm-4 ccfreature standard">
+					<i class="fa fa-check iconok"></i>
+				</div>
+				<div class="col-xs-4 col-sm-4 ccfreature premium">
+					<span ng-repeat="rating in ratings">
+						<div star-rating ng-model="rating2" rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

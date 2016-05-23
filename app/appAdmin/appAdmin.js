@@ -36,6 +36,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 		.state('appAdmin.PrestadorCadServ', {
 			url: "/PrestadorCadServ",
 			templateUrl: "app/appAdmin/views/Prestador/PrestadorCadServico.html",
+			controller: "PrestadorCadServicoCtrl",
 			tipo: 'Prestador'
 		})
 

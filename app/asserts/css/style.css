@@ -139,7 +139,7 @@ span.round-tab:hover {
     }
 }
 
-rating{
+rating {
   color: #a9a9a9;
   margin: 0;
   padding: 0;
@@ -160,4 +160,95 @@ ul.rating {
 
 .rating .filled {
   color: #ffff00;
+}
+.iconok {
+        font-size: 27px;
+        color: green;
+    }
+
+    .iconno {
+        font-size: 27px;
+        color: rgb(221, 41, 41);
+    }
+
+    .theader {
+        text-align: center;
+        color: rgb(78, 33, 33);
+    }
+
+    .ptitle {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 7px;
+    }
+
+    .pprice {
+        font-size: 17px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .occurance {
+    }
+
+    .cfeature {
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .feature {
+        margin-bottom: 3px;
+    }
+
+    .infos {
+        background: #CDD8C9;
+    }
+
+    .free {
+        background: #DFF0D8;
+    }
+
+    .theader.free {
+        background: #DFF0D8;
+        border-bottom: 3px solid white;
+    }
+
+    .standard {
+        background: #D9EDF7;
+    }
+
+    .theader.standard {
+        background: #D9EDF7;
+        border-bottom: 3px solid white;
+    }
+
+
+    .premium {
+        background: #8DB9DF;
+        height: 40px;
+    }
+
+    .theader.premium {
+        background: #8DB9DF;
+        border-bottom: 3px solid white;
+    }
+
+    .ccfreature {
+        text-align: center;
+        font-size: 2em;
+    }
+
+.tags {
+   margin-bottom: 5px;
+} 
+
+.tags .tag {
+   display: inline-block;
+   margin-right: 5px;
+   font-size: 13px;
+}
+  
+.tag .close {
+   font-size: 14px;
+   margin-left: 5px;
 }
