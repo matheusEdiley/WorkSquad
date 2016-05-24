@@ -11,7 +11,7 @@ mainApp.directive('tagManager', function() {
 		template: '<div class="tags">' +
 			'<div ng-repeat="(idx, tag) in tags" class="tag label label-primary">{{tag}} <a class="close" href ng-click="remove(idx)">×</a></div>' +
 			'</div>' +
-			'<div class="input-group"><input type="text" class="form-control" placeholder="Informe o dia da semana..." ng-model="newValue" /> ' +
+			'<div class="input-group"><input type="text" class="form-control" placeholder="Após digitar,aperte enter..." ng-model="newValue" /> ' +
 			'<span class="input-group-btn"><a class="btn btn-default" ng-click="add()"><i class="glyphicon glyphicon-plus"></i> </a></span></div>',
 		link: function($scope, $element) {
 

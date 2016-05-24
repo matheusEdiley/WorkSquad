@@ -1,7 +1,31 @@
 <h3>Formação e cursos</h3>
 <br />
+<div class="row">
+	<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="input-group">
+					<span class="input-group-addon">Graduação </span>
+				<select type="search" ng-model="autocomplete" class="form-control" class="form-control" placeholder="Digite uma categoria" tabindex="3"></select>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-md-12">
+			<tag-manager tags="cursos"></tag-manager>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-md-12">
+			<tag-manager tags="certificacoes"></tag-manager>
+		</div>
+	</div>
+</div>
+</div>
 <br />
 <ul class="list-inline pull-right">
-	<li><button type="button" class="btn btn-default prev-step" ng-click="Next(2)">Voltar</button></li>
-	<li><button type="button" class="btn btn-primary next-step" ng-click="Next(4)">Próximo</button></li>
+<li><button type="button" class="btn btn-default prev-step" ng-click="Next(2)">Voltar</button></li>
+<li><button type="button" class="btn btn-primary next-step" ng-click="Next(4)">Próximo</button></li>
 </ul>

@@ -5,6 +5,8 @@
 
     var PrestadorCadastroCtrl = function($scope, validacao, $http, $state) {
 
+         $scope.cursos = ['informática básica', 'digitação'];
+         $scope.certificacoes = ['CRM', 'SAP'];
 
         /**
          * [BuscarPrestEndereco Buscar o endereço pelo cep]
