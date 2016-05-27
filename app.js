@@ -5,7 +5,7 @@ angular.module('MainApp', [
 	'ngStorage'
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-	//$urlRouterProvider.otherwise('/appPortal/a');
+	$urlRouterProvider.otherwise('/appPortal/Portal');
 	$stateProvider
 		.state('appAdmin', {
 			url: "/appAdmin",
@@ -19,8 +19,3 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
 			controller: "appPortalCtrl"
 		})
 }]);
-
-
-
-
-

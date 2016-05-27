@@ -62,13 +62,14 @@ mainApp.factory('alimentar', ['$http', function($http) {
     	
     	return[
 
-    	
+
 
     	];
-    	
+
     }
 	return {
 		//teste: teste,
-		ListaGraduacoes: ListaGraduacoes
+		ListaGraduacoes: ListaGraduacoes,
+		ListaCategorias: ListaCategorias
 	};
 }]);

@@ -20,19 +20,30 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-mainApp.controller('appPortalCtrl', ['$scope', 'validacao', '$http', '$localStorage', '$state', '$window', function($scope, validacao, $http, $localStorage, $state, $window) {
+mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localStorage', '$state', '$window', 'ClienteService', function($scope, metodosAux, $http, $localStorage, $state, $window, ClienteService) {
 
 	var onError = function(error) {
 		$scope.error = error.data;
 	};
 
-	var onLoginRealizado = function(callback) {
-        
-        CloseModal();
+	var onCadastroLocalizado = function(callback) {
 
-		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
+		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data[0]));
+
+	};
+
+	var onLoginRealizado = function(callback) {
+
+		CloseModal();
+
+		if (callback.data.user.tipo == "Cliente") {
+			ClienteService.searchCliente(callback.data.user)
+				.then(onCadastroLocalizado, onError);
+		};
+
+
 		$window.sessionStorage.setItem('token', callback.data.token);
-		
+
 		$state.go("appAdmin.Main");
 
 	};

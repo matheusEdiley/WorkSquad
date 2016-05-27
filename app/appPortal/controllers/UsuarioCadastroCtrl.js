@@ -4,31 +4,46 @@
 (function() {
 	var mainApp = angular.module("MainApp");
 
-	var UsuarioCadastroCtrl = function($scope, $http) {
-        
-        $scope.FlgSenha = true;
+	var UsuarioCadastroCtrl = function($scope, $http, ClienteService, metodosAux) {
+
+		$scope.FlgSenha = true;
+
 		var onError = function(error) {
 			$scope.error = error.data;
 		};
 
-		$scope.CadastrarUser = function(user, verifSenha) {
+		$scope.CadastrarUser = function(entid, verifSenha) {
 
-			if (user.senha != verifSenha) {
-	            
-	            $scope.FlgSenha = false;
+			if (entid.user.senha != verifSenha) {
+
+				$scope.FlgSenha = false;
 				return false;
 			};
 
-			user.senha = CryptoJS.SHA1(user.senha).toString();
+			entid.user.senha = CryptoJS.SHA1(entid.user.senha).toString();
 
-			$http.post('/user', user)
+			$http.post('/user', entid.user)
 				.then(onCadastro, onError);
 
+
 		};
-        
-        var onCadastro = function(user){
-        	$scope.FlgCadastro = true;
-        };
+
+		var onCadastro = function(user) {
+
+			if (user.data.tipo == "Cliente") {
+
+				//Adicionando um cliente
+				ClienteService.addCliente(user.data).then(onCadastroEntidade, onError);
+			};
+
+			$scope.FlgCadastro = true;
+		};
+
+		var onCadastroEntidade = function(entidade) {
+
+			$scope.FlgCadastro = true;
+			
+		};
 
 	}
 	mainApp.controller('UsuarioCadastroCtrl', UsuarioCadastroCtrl);

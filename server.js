@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 //app.use('/app', function(req, res, next) {
-	//auth.validaToken(req, res, next);
+//auth.validaToken(req, res, next);
 //});
 
 //Inserir usuário
@@ -38,7 +38,7 @@ app.get('/app/user', function(req, res) {
 			if (err) {
 				res.send("Ocorreu um erro no servidor. Contate o administrador.");
 			} else if (users) {
-				
+
 				res.send(users);
 			}
 		});
@@ -65,7 +65,9 @@ app.post('/login', function(req, res) {
 	if ((req.param('login')) && (req.param('senha'))) {
 		UserController.findByUserSenha(req.param('login'), req.param('senha'), function(user) {
 			console.log(req.param('senha'));
-			if (user === null) { return null; };
+			if (user === null) {
+				return null;
+			};
 			var token = jwt.sign({
 				foo: 'bar'
 			}, 'mykeytest');
@@ -78,34 +80,39 @@ app.post('/login', function(req, res) {
 	}
 });
 
-app.post('/app/cliente/', function(req, res){
-	
-	var cliente = ClienteController.getClienteSchema();
-	
-	cliente.nome = req.body.nome;
-	cliente.sobrenome = req.body.sobrenome;
-	cliente.cpf = req.body.cpf;
-	cliente.celular = req.body.celular;
-	cliente.telefone = req.body.telefone;
-	cliente.cep = req.body.cep;
-	cliente.numero = req.body.numero;
-	cliente.logradouro = req.body.logradouro;
-	cliente.bairro = req.body.bairro;
-	cliente.localidade = req.body.localidade;
-	cliente.uf = req.body.uf;
+app.post('/app/cliente/', function(req, res) {
 
+	var cliente = ClienteController.getClienteSchema();
+
+	cliente.nome = undefined;
+	cliente.sobrenome = undefined;
+	cliente.cpf = undefined;
+	cliente.celular = undefined;
+	cliente.telefone = undefined;
+	cliente.cep = undefined;
+	cliente.numero = undefined;
+	cliente.logradouro = undefined;
+	cliente.bairro = undefined;
+	cliente.localidade = undefined;
+	cliente.uf = undefined;
+	cliente.user = req.body._id;
+
+	console.log(cliente);
 	ClienteController.save(cliente, function(clienteret) {
 		res.json(clienteret);
+		console.log(clienteret);
 	})
 });
 
-app.get('/app/cliente', function(req, res) {
-	var id = req.param('id');
+app.get('/app/cliente/', function(req, res) {
+	
+	var id = '5748b1bc38cf03fc3f000001';
+	console.log(id);
 	if (id == undefined) {
 		ClienteController.find(function(err, clientes) {
 			if (err) {
 				res.send("Ocorreu um erro no servidor. Contate o administrador.");
-			} else if (clientes) {	
+			} else if (clientes) {
 				res.send(clientes);
 			}
 		});
@@ -118,7 +125,7 @@ app.get('/app/cliente', function(req, res) {
 	}
 });
 
-app.get('/app/cliente/remove', function(req, res) {
+app.delete('/app/cliente/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
 		ClienteController.remove(id);

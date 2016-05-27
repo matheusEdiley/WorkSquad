@@ -14,7 +14,7 @@
          */
         $scope.BuscarPrestEndereco = function(cep) {
 
-            $http.get('http://viacep.com.br/ws/01001000/json/').success(function(data) {
+            $http.get('http://viacep.com.br/ws/' + cep + '/json/').success(function(data) {
                 $scope.pre.logradouro = data.logradouro;
                 $scope.pre.bairro = data.bairro;
                 $scope.pre.localidade = data.localidade;

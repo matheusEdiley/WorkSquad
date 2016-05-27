@@ -19,7 +19,7 @@
 				<hr class="colorgraph">
 				
 				<div class="form-group">
-					<select name="" class="form-control input-lg" ng-model="user.tipo" placeholder="Tipo de cadastro">
+					<select name="" class="form-control input-lg" ng-model="entid.user.tipo" placeholder="Tipo de cadastro">
 						<option value=""></option>
 						<option value="Cliente">Cliente</option>
 						<option value="Prestador">Prestador</option>
@@ -29,16 +29,16 @@
 				
 				
 				<div class="form-group">
-					<input type="text" name="display_name" ng-model="user.login" id="display_name" class="form-control input-lg" placeholder="Nome de usuário" tabindex="3" >
+					<input type="text" name="display_name" ng-model="entid.user.login" id="display_name" class="form-control input-lg" placeholder="Nome de usuário" tabindex="3" >
 				</div>
 				
 				<div class="form-group">
-					<input type="email" name="email" ng-model="user.email" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" autofocus>
+					<input type="email" name="email" ng-model="entid.user.email" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" autofocus>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input type="password" name="password" ng-model="user.senha" id="password" class="form-control input-lg" placeholder="Senha" tabindex="5">
+							<input type="password" name="password" ng-model="entid.user.senha" id="password" class="form-control input-lg" placeholder="Senha" tabindex="5">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
@@ -56,7 +56,7 @@
 				
 				<hr class="colorgraph">
 				<div class="row">
-					<div class="col-xs-12 col-md-6"><input type="submit" ng-click="CadastrarUser(user, verifSenha)" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+					<div class="col-xs-12 col-md-6"><input type="submit" ng-click="CadastrarUser(entid, verifSenha)" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
 					<div class="col-xs-12 col-md-6"><a href="" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-block btn-lg">Login</a></div>
 				</div>
 			</form>

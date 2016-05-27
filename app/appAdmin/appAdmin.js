@@ -65,7 +65,10 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 
 mainApp.controller('appAdminCtrl', ['$scope', '$state', 'autenticar', 'menu', '$window', '$stateParams', function($scope, $state, autenticar, menu, $window, $stateParams) {
 
-	$scope.Menu = null;
+	// if (autenticar.status.reload) {
+	// 	$window.sessionStorage['reload'] = false;
+	// 	$state.reload();
+	// };
 
 	//Verifica se a sessão ainda é válida
 	if (!autenticar.estaLogado()) {

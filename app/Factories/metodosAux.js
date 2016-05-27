@@ -1,6 +1,6 @@
 var mainApp = angular.module("MainApp");
 
-mainApp.factory('validacao', ['$http', function($http) {
+mainApp.factory('metodosAux', ['$http', function($http) {
 
 
 	function ValidarCPF(cpf) {
@@ -42,10 +42,10 @@ mainApp.factory('validacao', ['$http', function($http) {
 
 	}
 
-	
 
 	return {
 		//teste: teste,
 		ValidarCPF: ValidarCPF
+		
 	};
 }]);

@@ -2,17 +2,16 @@
 <html ng-app="MainApp">
     <head>
         <meta charset="utf-8">
-
         <!-- Jquery -->
         <script src="app/asserts/js/jquery.min.js"></script>
-        
+
         <!-- Chamadas do Angular -->
         <script src="app/asserts/js/angular.min.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="app/asserts/js/mask.min.js"></script>
         <script src="app/asserts/js/ngStorage.js"></script>
         <script src="app.js"></script>
-        
+
         <!-- Criptografia -->
         <script src="app/asserts/js/sha1.js"></script>
         
@@ -29,30 +28,36 @@
         <script type="text/javascript" src="app/appPortal/controllers/UsuarioCadastroCtrl.js"></script>
         <script type="text/javascript" src="app/appPortal/controllers/PortalCtrl.js"></script>
         <script type="text/javascript" src="app/appAdmin/controllers/MainCtrl.js"></script>
-        
+
         <!-- Factories -->
         <script type="text/javascript" src="app/Factories/autenticar.js"></script>
         <script type="text/javascript" src="app/Factories/menu.js"></script>
-        <script type="text/javascript" src="app/Factories/validacao.js"></script>
-        
+        <script type="text/javascript" src="app/Factories/metodosAux.js"></script>
+        <script type="text/javascript" src="app/Factories/alimentar.js"></script>
+
         <!-- Diretivas -->
         <script type="text/javascript" src="app/Directives/starRating.js"></script>
         <script type="text/javascript" src="app/Directives/tagManager.js"></script>
-            
+
+        <!-- Serviços -->
+        <script type="text/javascript" src="app/Services/Administrador.js"></script>
+        <script type="text/javascript" src="app/Services/ClienteService.js"></script>
+        <script type="text/javascript" src="app/Services/Prestador.js"></script>
+        <script type="text/javascript" src="app/Services/Servico.js"></script>
+
         <!-- Estilos e icones -->
         <link href="app/asserts/css/bootstrap.min.css" rel="stylesheet">
         <link href="app/asserts/css/style.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
-
     </head>
-    
+
     <body>
-        
+
         <div ui-view>
         </div>
     </body>
-    
+
     <!-- Js Boostrap -->
     <script src="app/asserts/js/bootstrap.min.js"></script>
-   
+
 </html>

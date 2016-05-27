@@ -5,6 +5,7 @@ var auth = require('./middlewares/auth')
 
 //Controllers da aplicação
 var UserController = require('./WebService/controllers/UserCtrl');
+var ClienteController = require('./WebService/controllers/ClienteCtrl');
 
 var app = express();
 
@@ -12,10 +13,11 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(bodyParser.json());
-app.use('/app', function(req, res, next) {
-	auth.validaToken(req, res, next);
-});
- 
+// app.use('/app', function(req, res, next) {
+// 	auth.validaToken(req, res, next);
+// });
+
+
 //Inserir usuário
 app.post('/user', function(req, res) {
 	var login = req.body.login;
@@ -73,7 +75,6 @@ app.post('/login', function(req, res) {
 		});
 	}
 });
-
 
 
 app.listen(3000, function() {
