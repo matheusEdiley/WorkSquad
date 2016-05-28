@@ -10,19 +10,18 @@ exports.save = function(cliente, cb) {
 		console.log(cliente);
 		return cb(cliente);
 	});
-
 }
 
 exports.find = function(cb) {
-	User.find(function(err, clientes) {
+	Cliente.find().populate('user').exec(function(err, clientes) {
 		return cb(err, clientes);
 	});
 }
 
 exports.findOne = function(id, cb) {
 	Cliente.find({
-		user: id
-	}, function(err, cliente) {
+		_id: id
+	}).populate('user').exec(function(err, cliente) {
 		return cb(cliente);
 	});
 }

@@ -7,6 +7,8 @@ var mongojs = require('mongojs');
 //Controllers da aplicação
 var UserController = require('./WebService/controllers/UserCtrl');
 var ClienteController = require('./WebService/controllers/ClienteCtrl');
+var ServicoController = require('./WebService/controllers/ServicoCtrl');
+var PrestadorController = require('./WebService/controllers/PrestadorCtrl');
 
 var app = express();
 
@@ -51,6 +53,7 @@ app.get('/app/user', function(req, res) {
 	}
 });
 
+//Remove Usuário
 app.get('/app/user/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
@@ -61,6 +64,7 @@ app.get('/app/user/remove', function(req, res) {
 	}
 });
 
+//Login...
 app.post('/login', function(req, res) {
 	if ((req.param('login')) && (req.param('senha'))) {
 		UserController.findByUserSenha(req.param('login'), req.param('senha'), function(user) {
@@ -80,22 +84,26 @@ app.post('/login', function(req, res) {
 	}
 });
 
+//Inserir/Editar cliente
 app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
 
-	cliente.nome = undefined;
-	cliente.sobrenome = undefined;
-	cliente.cpf = undefined;
-	cliente.celular = undefined;
-	cliente.telefone = undefined;
-	cliente.cep = undefined;
-	cliente.numero = undefined;
-	cliente.logradouro = undefined;
-	cliente.bairro = undefined;
-	cliente.localidade = undefined;
-	cliente.uf = undefined;
-	cliente.user = req.body._id;
+	if (req.body._clienteId != undefined)
+		cliente._id = req.body._clienteId;
+
+	cliente.nome = req.body.nome;
+	cliente.sobrenome = req.body.sobrenome;
+	cliente.cpf = req.body.cpf;
+	cliente.celular = req.body.celular;
+	cliente.telefone = req.body.telefone;
+	cliente.cep = req.body.cep;
+	cliente.numero = req.body.numero;
+	cliente.logradouro = req.body.logradouro;
+	cliente.bairro = req.body.bairro;
+	cliente.localidade = req.body.localidade;
+	cliente.uf = req.body.uf;
+	cliente.user = req.body._userId;
 
 	console.log(cliente);
 	ClienteController.save(cliente, function(clienteret) {
@@ -104,9 +112,10 @@ app.post('/app/cliente/', function(req, res) {
 	})
 });
 
+//buscar por ID/Listar todos os clientes
 app.get('/app/cliente/', function(req, res) {
 	
-	var id = '5748b1bc38cf03fc3f000001';
+	var id = req.param('id');
 	console.log(id);
 	if (id == undefined) {
 		ClienteController.find(function(err, clientes) {
@@ -125,6 +134,7 @@ app.get('/app/cliente/', function(req, res) {
 	}
 });
 
+//remover cliente
 app.delete('/app/cliente/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
@@ -135,6 +145,146 @@ app.delete('/app/cliente/remove', function(req, res) {
 	}
 });
 
+//Inserir/Editar Servico
+app.post('/app/servico/', function(req, res) {
+
+	var servico = ServicoController.getServicoSchema();
+
+	if (req.body._servicoId != undefined)
+		servico._id = req.body._servicoId;
+
+	servico.descricao = req.body.descricao;
+	servico.valor = req.body.valor;
+	servico.voluntario = req.body.voluntario;
+
+	console.log(servico);
+	ServicoController.save(servico, function(servicoret) {
+		res.json(servicoret);
+		console.log(servicoret);
+	})
+});
+
+//buscar por ID/Listar todos os serviços
+app.get('/app/servico/', function(req, res) {
+	
+	var id = req.param('id');
+	console.log(id);
+	if (id == undefined) {
+		ServicoController.find(function(err, servicos) {
+			if (err) {
+				res.send("Ocorreu um erro no servidor. Contate o administrador.");
+			} else if (servicos) {
+				res.send(servicos);
+			}
+		});
+	} else {
+		ServicoController.findOne(id, function(servico) {
+			if (servico) {
+				res.send(servico);
+			}else {
+				res.send('');
+			}
+		});
+	}
+});
+
+//remover serviço
+app.delete('/app/servico/remove', function(req, res) {
+	var id = req.param('id');
+	if (id != undefined) {
+		ServicoController.remove(id);
+		res.send(id + " removido.");
+	} else {
+		res.send("_id inválido.");
+	}
+});
+
+//Inserir/Editar prestador
+app.post('/app/prestador/', function(req, res) {
+
+	var prestador = PrestadorController.getPrestadorSchema();
+
+	if (req.body._prestadorId != undefined)
+		prestador._id = req.body._prestadorId;
+
+	prestador.nome = req.body.nome;
+	prestador.sobrenome = req.body.sobrenome;
+	prestador.cpf = req.body.cpf;
+	prestador.celular = req.body.celular;
+	prestador.telefone = req.body.telefone;
+	prestador.cep = req.body.cep;
+	prestador.numero = req.body.numero;
+	prestador.logradouro = req.body.logradouro;
+	prestador.bairro = req.body.bairro;
+	prestador.localidade = req.body.localidade;
+	prestador.uf = req.body.uf;
+	prestador.user = req.body._userId;
+
+	console.log(prestador);
+	PrestadorController.save(prestador, function(prestadorret) {
+		res.json(prestadorret);
+		console.log(prestadorret);
+	})
+});
+
+//inserir serviço para o prestador
+app.post('/app/prestador/servico', function(req, res) {
+
+	var prestador = PrestadorController.getPrestadorSchema();
+
+	if ((req.body._prestadorId != undefined) 
+		&& (req.body._servicoId != undefined)) {
+		PrestadorController.findOne(req.body._prestadorId, function(prestador) {
+			if (prestador) {
+				console.log(prestador);
+				prestador.servicos.push(req.body._servicoId);
+				PrestadorController.save(prestador, function(prestadorret){
+					res.json(prestadorret);
+					console.log(prestadorret);
+				});
+			}else {
+				res.json('erro');
+			}
+		});
+	}else {
+		res.json('erro');
+	}
+});
+	
+//buscar por ID/Listar todos os prestadors
+app.get('/app/prestador/', function(req, res) {
+	
+	var id = req.param('id');
+	console.log(id);
+	if (id == undefined) {
+		PrestadorController.find(function(err, prestadores) {
+			if (err) {
+				res.send("Ocorreu um erro no servidor. Contate o administrador.");
+			} else if (prestadores) {
+				res.send(prestadores);
+			}
+		});
+	} else {
+		PrestadorController.findOne(id, function(prestador) {
+			if (prestador) {
+				res.send(prestador);
+			}
+		});
+	}
+});
+
+//remover prestador
+app.delete('/app/prestador/remove', function(req, res) {
+	var id = req.param('id');
+	if (id != undefined) {
+		PrestadorController.remove(id);
+		res.send(id + " removido.");
+	} else {
+		res.send("_id inválido.");
+	}
+});
+
+
 app.listen(3000, function() {
-	console.log('Example app listening on port 3000!');
+	console.log('WorkSquad WebService iniciado na porta 3000!');
 });
