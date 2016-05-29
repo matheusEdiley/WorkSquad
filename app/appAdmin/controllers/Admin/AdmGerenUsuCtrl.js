@@ -4,7 +4,7 @@
 (function() {
     var mainApp = angular.module("MainApp");
 
-    var AdmGerenUsuCtrl = function($scope, validacao, $http) {
+    var AdmGerenUsuCtrl = function($scope, metodosAux, $http) {
 
         
         var onClienteGetCompleted = function(response){

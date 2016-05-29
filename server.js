@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname));
 //app.use('/app', function(req, res, next) {
 //auth.validaToken(req, res, next);
-//})
+//});
 
 //Inserir usuário
 app.post('/user', function(req, res) {
@@ -89,7 +89,7 @@ app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
 
-	if (req.body._clienteId != undefined)
+	if (req.body._prestadorId != undefined)
 		cliente._id = req.body._clienteId;
 
 	cliente.nome = req.body.nome;
@@ -103,9 +103,10 @@ app.post('/app/cliente/', function(req, res) {
 	cliente.bairro = req.body.bairro;
 	cliente.localidade = req.body.localidade;
 	cliente.uf = req.body.uf;
-	cliente.user = req.body._userId;
+	cliente.user = req.body.user._id;
+	cliente.servicos = req.body.servicos;
 
-	console.log(cliente);
+	//console.log(cliente);
 	ClienteController.save(cliente, function(clienteret) {
 		res.json(clienteret);
 		console.log(clienteret);
@@ -113,9 +114,8 @@ app.post('/app/cliente/', function(req, res) {
 });
 
 //buscar por ID/Listar todos os clientes
-app.get('/app/cliente/', function(req, res) {
-	
-	var id = req.param('id');
+app.get('/app/cliente/:id', function(req, res) {
+	var id = req.params.id;
 	console.log(id);
 	if (id == undefined) {
 		ClienteController.find(function(err, clientes) {
@@ -133,6 +133,7 @@ app.get('/app/cliente/', function(req, res) {
 		});
 	}
 });
+
 
 //remover cliente
 app.delete('/app/cliente/remove', function(req, res) {
@@ -166,7 +167,7 @@ app.post('/app/servico/', function(req, res) {
 
 //buscar por ID/Listar todos os serviços
 app.get('/app/servico/', function(req, res) {
-	
+
 	var id = req.param('id');
 	console.log(id);
 	if (id == undefined) {
@@ -181,7 +182,7 @@ app.get('/app/servico/', function(req, res) {
 		ServicoController.findOne(id, function(servico) {
 			if (servico) {
 				res.send(servico);
-			}else {
+			} else {
 				res.send('');
 			}
 		});
@@ -218,7 +219,7 @@ app.post('/app/prestador/', function(req, res) {
 	prestador.bairro = req.body.bairro;
 	prestador.localidade = req.body.localidade;
 	prestador.uf = req.body.uf;
-	prestador.user = req.body._userId;
+	prestador.user = req.body.user._id;
 
 	console.log(prestador);
 	PrestadorController.save(prestador, function(prestadorret) {
@@ -232,28 +233,27 @@ app.post('/app/prestador/servico', function(req, res) {
 
 	var prestador = PrestadorController.getPrestadorSchema();
 
-	if ((req.body._prestadorId != undefined) 
-		&& (req.body._servicoId != undefined)) {
+	if ((req.body._prestadorId != undefined) && (req.body._servicoId != undefined)) {
 		PrestadorController.findOne(req.body._prestadorId, function(prestador) {
 			if (prestador) {
 				console.log(prestador);
 				prestador.servicos.push(req.body._servicoId);
-				PrestadorController.save(prestador, function(prestadorret){
+				PrestadorController.save(prestador, function(prestadorret) {
 					res.json(prestadorret);
 					console.log(prestadorret);
 				});
-			}else {
+			} else {
 				res.json('erro');
 			}
 		});
-	}else {
+	} else {
 		res.json('erro');
 	}
 });
-	
+
 //buscar por ID/Listar todos os prestadors
 app.get('/app/prestador/', function(req, res) {
-	
+
 	var id = req.param('id');
 	console.log(id);
 	if (id == undefined) {

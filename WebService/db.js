@@ -37,7 +37,8 @@ var Cliente = new Schema({
 	bairro: String,
 	localidade: String,
 	uf: String,
-	user: { type: ObjectId, ref : 'User' }
+	user: { type: ObjectId, ref : 'User' },
+	servicos: [{ type: ObjectId, ref : 'Servico' }]
 });
 
 var Prestador = new Schema({

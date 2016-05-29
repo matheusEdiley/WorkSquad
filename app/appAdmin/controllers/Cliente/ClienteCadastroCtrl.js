@@ -4,7 +4,10 @@
 (function() {
   var mainApp = angular.module("MainApp");
 
-  var ClienteCadastroCtrl = function($scope, validacao, $http, $localStorage) {
+  var ClienteCadastroCtrl = function($scope, metodosAux, $http, $localStorage, ClienteService, $window, autenticar) {
+
+    var ClienteEntid = autenticar.status.entidade;
+
 
     $scope.FlgCPF = true;
     $scope.FlgSenha = "primary";
@@ -13,21 +16,25 @@
       $scope.error = error.data;
     };
 
+    var onSalvo = function(callback) {
+      var a = callback;
+    };
+
     //Busca de Endereço por CEP.
     $scope.BuscarEndereco = function(cep) {
 
       $http.get('http://viacep.com.br/ws/' + cep + '/json/')
         .success(function(data) {
-          $scope.usu.logradouro = data.logradouro;
-          $scope.usu.bairro = data.bairro;
-          $scope.usu.localidade = data.localidade;
-          $scope.usu.uf = data.uf;
+          $scope.cliente.logradouro = data.logradouro;
+          $scope.cliente.bairro = data.bairro;
+          $scope.cliente.localidade = data.localidade;
+          $scope.cliente.uf = data.uf;
         });
     };
 
     $scope.ValidarCPF = function(cpf) {
 
-      $scope.FlgCPF = validacao.ValidarCPF(cpf);
+      $scope.FlgCPF = metodosAux.ValidarCPF(cpf);
 
     };
 
@@ -38,25 +45,27 @@
       refresh();
     };
 
-    $scope.SalvarCadastro = function(usu) {
-      
-      var a = $localStorage.token;
+    $scope.SalvarCadastro = function(cliente) {
 
+      cliente._clienteId = ClienteEntid ._id;
+      
+      ClienteService.addCliente(cliente)
+        .then(onSalvo, onError);
     };
 
     $scope.LimparCampos = function() {
-      $scope.usu.nome = '';
-      $scope.usu.cpf = '';
-      $scope.usu.cep = '';
-      $scope.usu.sobrenome = '';
-      $scope.usu.senha = '';
-      $scope.usu.repearSenha = '';
-      $scope.usu.logradouro = '';
-      $scope.usu.bairro = '';
-      $scope.usu.localidade = '';
-      $scope.usu.uf = '';
-      $scope.usu.numero = '';
-      $scope.usu.email = '';
+      $scope.cliente.nome = '';
+      $scope.cliente.cpf = '';
+      $scope.cliente.cep = '';
+      $scope.cliente.sobrenome = '';
+      $scope.cliente.senha = '';
+      $scope.cliente.repearSenha = '';
+      $scope.cliente.logradouro = '';
+      $scope.cliente.bairro = '';
+      $scope.cliente.localidade = '';
+      $scope.cliente.uf = '';
+      $scope.cliente.numero = '';
+      $scope.cliente.email = '';
       $scope.FlgCPF = true;
     };
   }

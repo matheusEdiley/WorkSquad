@@ -28,24 +28,21 @@ mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localSto
 
 	var onCadastroLocalizado = function(callback) {
 
-		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data[0]));
-
+		$state.go("appAdmin.Main");
+		
 	};
 
 	var onLoginRealizado = function(callback) {
 
-		CloseModal();
+		//CloseModal();
+
+		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
+		$window.sessionStorage.setItem('token', callback.data.token);
 
 		if (callback.data.user.tipo == "Cliente") {
 			ClienteService.searchCliente(callback.data.user)
 				.then(onCadastroLocalizado, onError);
 		};
-
-
-		$window.sessionStorage.setItem('token', callback.data.token);
-
-		$state.go("appAdmin.Main");
-
 	};
 
 	$scope.LimparLogin = function() {

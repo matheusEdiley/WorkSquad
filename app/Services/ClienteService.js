@@ -7,8 +7,7 @@ mainApp.service('ClienteService', function($http, autenticar) {
 	}
 
 	this.searchCliente = function(user) {
-		return $http.get('/app/cliente/', user);
+		return $http.get('/app/cliente/' + user._id);
 	}
 
-	
 });

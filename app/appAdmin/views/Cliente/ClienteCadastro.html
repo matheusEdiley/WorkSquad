@@ -15,12 +15,12 @@
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.nome" class="form-control " placeholder="Nome" tabindex="1">
+											<input type="text" ng-model="cliente.nome" class="form-control " placeholder="Nome" tabindex="1">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.sobrenome" class="form-control " placeholder="Sobrenome" tabindex="2">
+											<input type="text" ng-model="cliente.sobrenome" class="form-control " placeholder="Sobrenome" tabindex="2">
 										</div>
 									</div>
 								</div>
@@ -29,13 +29,13 @@
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="input-group">
 											<span class="input-group-addon">CPF</span>
-											<input type="search" ng-model="usu.cpf" class="form-control" ng-change="ValidarCPF(usu.cpf)" ui-mask="999.999.999-99"  ui-mask-placeholder="_" ui-mask-placeholder-char="_" tabindex="3">
+											<input type="search" ng-model="cliente.cpf" class="form-control" ng-change="ValidarCPF(cliente.cpf)" ui-mask="999.999.999-99"  ui-mask-placeholder="_" ui-mask-placeholder-char="_" tabindex="3">
 										</div>
 										<span class="help-block" ng-if="!FlgCPF"> <font color="#a94442" > CPF Inválido! </font></span>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="email" ng-model="usu.email" class="form-control " placeholder="Email example@example.com" tabindex="4">
+											<input type="email" ng-model="cliente.email" class="form-control " placeholder="Email example@example.com" tabindex="4">
 										</div>
 									</div>
 								</div>
@@ -43,13 +43,13 @@
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="input-group">
 											<span class="input-group-addon">Telefone</span>
-											<input type="text" ng-model="usu.telefone" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" class="form-control" tabindex="5">
+											<input type="text" ng-model="cliente.telefone" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" class="form-control" tabindex="5">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="input-group">
 											<span class="input-group-addon">Celular</span>
-											<input type="text" ng-model="usu.celular" class="form-control" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" tabindex="6">
+											<input type="text" ng-model="cliente.celular" class="form-control" ui-mask="(99) 9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" tabindex="6">
 										</div>
 									</div>
 								</div>
@@ -68,9 +68,9 @@
 										
 										<div class="input-group">
 											
-											<input type="text" ng-model="usu.cep" ui-mask="99999-999" class="form-control" tabindex="7" >
+											<input type="text" ng-model="cliente.cep" ui-mask="99999-999" class="form-control" tabindex="7" >
 											<span class="input-group-btn">
-												<button ng-click="BuscarEndereco(usu.cep)" style="margin-top: -0.8%" class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+												<button ng-click="BuscarEndereco(cliente.cep)" style="margin-top: -0.8%" class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i></button>
 											</span>
 											
 										</div>
@@ -79,19 +79,19 @@
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.numero" class="form-control" placeholder="Número da residencia" tabindex="8">
+											<input type="text" ng-model="cliente.numero" class="form-control" placeholder="Número da residencia" tabindex="8">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.logradouro" class="form-control " placeholder="Rua" tabindex="9">
+											<input type="text" ng-model="cliente.logradouro" class="form-control " placeholder="Rua" tabindex="9">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.bairro" placeholder="Bairro" class="form-control " tabindex="10">
+											<input type="text" ng-model="cliente.bairro" placeholder="Bairro" class="form-control " tabindex="10">
 										</div>
 									</div>
 									
@@ -100,12 +100,12 @@
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.localidade" class="form-control " placeholder="Cidade" tabindex="11">
+											<input type="text" ng-model="cliente.localidade" class="form-control " placeholder="Cidade" tabindex="11">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" ng-model="usu.uf" placeholder="Estado" class="form-control " tabindex="12">
+											<input type="text" ng-model="cliente.uf" placeholder="Estado" class="form-control " tabindex="12">
 										</div>
 									</div>
 								</div>
@@ -116,7 +116,7 @@
 				
 				<hr class="colorgraph">
 				<div class="row">
-					<div class="col-xs-12 col-md-6"><button ng-click="SalvarCadastro(usu)" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-ok"></i>  Atualizar</button></div>
+					<div class="col-xs-12 col-md-6"><button ng-click="SalvarCadastro(cliente)" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-ok"></i>  Atualizar</button></div>
 					<div class="col-xs-12 col-md-6"><button ng-click="LimparCampos()" class="btn btn-danger btn-block btn-lg"><i class="glyphicon glyphicon-remove"></i>  Cancelar</button></div>
 				</div>
 				<br />

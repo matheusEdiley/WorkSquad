@@ -4,7 +4,7 @@
 (function() {
   var mainApp = angular.module("MainApp");
 
-  var ClienteServCtrl = function($scope, validacao, $http) {
+  var ClienteServCtrl = function($scope, metodosAux, $http) {
     $scope.filtro = 'Filtrar por ';
 
     var onError = function(error) {

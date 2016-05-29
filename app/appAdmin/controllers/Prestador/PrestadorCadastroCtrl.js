@@ -3,7 +3,7 @@
 (function() {
     var mainApp = angular.module("MainApp");
 
-    var PrestadorCadastroCtrl = function($scope, validacao, $http, $state) {
+    var PrestadorCadastroCtrl = function($scope, metodosAux, $http, $state) {
 
          $scope.cursos = ['informática básica', 'digitação'];
          $scope.certificacoes = ['CRM', 'SAP'];

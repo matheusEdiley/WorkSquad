@@ -46,6 +46,5 @@ mainApp.factory('metodosAux', ['$http', function($http) {
 	return {
 		//teste: teste,
 		ValidarCPF: ValidarCPF
-		
 	};
 }]);
