@@ -47,8 +47,9 @@
 
     $scope.SalvarCadastro = function(cliente) {
 
-      cliente._clienteId = ClienteEntid ._id;
-      
+      cliente._clienteId = ClienteEntid._id;
+      cliente.userid = ClienteEntid.user._id;
+
       ClienteService.addCliente(cliente)
         .then(onSalvo, onError);
     };

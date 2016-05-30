@@ -112,6 +112,43 @@ app.post('/app/cliente/', function(req, res) {
 	})
 });
 
+//editar cliente
+app.post('/app/EditarCliente/', function(req, res) {
+
+	var cliente = ClienteController.getClienteSchema();
+
+	if ((req.body._clienteUserId != undefined)) {
+		ClienteController.findOne(req.body._clienteUserId, function(cliente) {
+			if (cliente) {
+				//console.log(cliente);
+
+				//cliente._id = req.body._id;
+				cliente.nome = req.body.nome;
+				cliente.sobrenome = req.body.sobrenome;
+				cliente.cpf = req.body.cpf;
+				cliente.celular = req.body.celular;
+				cliente.telefone = req.body.telefone;
+				cliente.cep = req.body.cep;
+				cliente.numero = req.body.numero;
+				cliente.logradouro = req.body.logradouro;
+				cliente.bairro = req.body.bairro;
+				cliente.localidade = req.body.localidade;
+				cliente.uf = req.body.uf;
+				cliente.user = req.body.userid;
+
+				ClienteController.save(cliente, function(clienteret) {
+					res.json(clienteret);
+					console.log(clienteret);
+				});
+			} else {
+				res.json('erro');
+			}
+		});
+	} else {
+		res.json('erro');
+	}
+});
+
 //buscar por ID/Listar todos os clientes
 app.get('/app/cliente/:id', function(req, res) {
 	var id = req.params.id;

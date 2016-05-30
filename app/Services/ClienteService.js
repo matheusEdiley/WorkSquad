@@ -6,6 +6,10 @@ mainApp.service('ClienteService', function($http, autenticar) {
 		return $http.post('/app/cliente/', cliente);
 	}
 
+	this.updateCliente = function(cliente) {
+		return $http.post('/app/EditarCliente/', cliente);
+	}
+
 	this.searchCliente = function(user) {
 		return $http.get('/app/cliente/' + user._id);
 	}
