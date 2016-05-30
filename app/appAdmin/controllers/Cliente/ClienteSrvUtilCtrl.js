@@ -6,6 +6,13 @@
 
 	var ClienteSrvUtilCtrl = function($scope) {
 
+		$scope.servicos = [{
+			"nome": "Carpintaria",
+			"prestador": "José",
+			"valor": "34,90"
+			
+		}];
+
 		$scope.rating = 0;
 		$scope.ratings = [{
 			current: 3,

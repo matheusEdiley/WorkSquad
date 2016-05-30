@@ -5,8 +5,8 @@
 
     var PrestadorCadastroCtrl = function($scope, metodosAux, $http, $state) {
 
-         $scope.cursos = ['informática básica', 'digitação'];
-         $scope.certificacoes = ['CRM', 'SAP'];
+        $scope.cursos = ['informática básica', 'digitação'];
+        $scope.certificacoes = ['CRM', 'SAP'];
 
         /**
          * [BuscarPrestEndereco Buscar o endereço pelo cep]
@@ -23,8 +23,22 @@
 
         };
 
+        var onError = function(error) {
+            $scope.error = error.data;
+        };
+
+        var onSalvo = function(callback) {
+            var a = callback;
+        };
+
+
+        $scope.Salvar = function(pre) {
+            pre.certificacoes = $scope.certificacoes;
+            pre.cursos = $scope.cursos;
+        }
+
         $scope.Cancelar = function() {
-            
+
             var listamenu = document.getElementById('menu').children;
             LimparMenu();
             listamenu.item(0).setAttribute('class', 'active');
@@ -65,7 +79,7 @@
     mainApp.config(function($stateProvider, $urlRouterProvider) {
         //
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/InfoPessoais");
+        $urlRouterProvider.otherwise("appAdmin/PrestadorCadastro/InfoPessoais");
 
         $stateProvider.
         state('appAdmin.PrestadorCadastro.InfoPessoais', {

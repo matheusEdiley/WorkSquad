@@ -4,7 +4,7 @@
 (function() {
 	var mainApp = angular.module("MainApp");
 
-	var UsuarioCadastroCtrl = function($scope, $http, ClienteService, metodosAux) {
+	var UsuarioCadastroCtrl = function($scope, $http, ClienteService, metodosAux, PrestadorService) {
 
 		$scope.FlgSenha = true;
 
@@ -31,10 +31,15 @@
 		var onCadastro = function(user) {
 
 			if (user.data.tipo == "Cliente") {
-
-				//Adicionando um cliente
-				ClienteService.addCliente(user.data).then(onCadastroEntidade, onError);
-			};
+				ClienteService.addCliente({
+					userid: user.data._id
+				}).then(onCadastroEntidade, onError);
+			}
+			else if(user.data.tipo == "Prestador"){
+				PrestadorService.addPrestador({
+					userid: user.data._id
+				}).then(onCadastroEntidade, onError);
+			}
 
 			$scope.FlgCadastro = true;
 		};
@@ -42,7 +47,7 @@
 		var onCadastroEntidade = function(entidade) {
 
 			$scope.FlgCadastro = true;
-			
+
 		};
 
 	}

@@ -20,7 +20,7 @@ exports.find = function(cb) {
 
 exports.findOne = function(id, cb) {
 	Prestador.find({
-		_id: id
+		user: id
 	}).populate('user servicos').exec(function(err, Prestador) {
 		return cb(Prestador);
 	});

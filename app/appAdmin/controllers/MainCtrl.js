@@ -3,7 +3,7 @@
 (function() {
   var mainApp = angular.module("MainApp");
 
-  var MainCtrl = function($scope, $http, autenticar, $window, ClienteService) {
+  var MainCtrl = function($scope, $http, autenticar, $window, ClienteService, PrestadorService) {
 
     var user = angular.fromJson($window.sessionStorage.getItem('usuario'));
 
@@ -16,8 +16,8 @@
     var onCadastroLocalizado = function(callback) {
 
       $window.sessionStorage.setItem('entidade', angular.toJson(callback.data[0]));
-     
-      $scope.nomecompleto = "Matheus" + " Ediley";
+
+      $scope.nomecompleto = "Matheus" + " " + "Ediley";
       $scope.cep = "34515-470";
       $scope.logradouro = "Rua José Machado Chaves";
       $scope.tipo = "Cliente";
@@ -37,7 +37,12 @@
       ClienteService.searchCliente(user)
         .then(onCadastroLocalizado, onError);
 
-    };
+    } else if (user.tipo == "Prestador") {
+     
+      PrestadorService.searchPrestador(user)
+        .then(onCadastroLocalizado, onError);
+
+    }
 
   }
 

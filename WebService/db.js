@@ -1,17 +1,17 @@
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+	ObjectId = Schema.ObjectId;
 
 var User = new Schema({
-    login    : String,
-    senha : String,
-    email: String,
-    tipo: String
+	login: String,
+	senha: String,
+	email: String,
+	tipo: String
 });
 
 var Administrador = new Schema({
-	nome : String,
+	nome: String,
 	sobrenome: String,
 	cpf: String,
 	celular: String,
@@ -22,11 +22,14 @@ var Administrador = new Schema({
 	bairro: String,
 	localidade: String,
 	uf: String,
-	user: { type: ObjectId, ref : 'User' }
+	user: {
+		type: ObjectId,
+		ref: 'User'
+	}
 });
 
 var Cliente = new Schema({
-	nome : String,
+	nome: String,
 	sobrenome: String,
 	cpf: String,
 	celular: String,
@@ -37,12 +40,18 @@ var Cliente = new Schema({
 	bairro: String,
 	localidade: String,
 	uf: String,
-	user: { type: ObjectId, ref : 'User' },
-	servicos: [{ type: ObjectId, ref : 'Servico' }]
+	user: {
+		type: ObjectId,
+		ref: 'User'
+	},
+	servicos: [{
+		type: ObjectId,
+		ref: 'Servico'
+	}]
 });
 
 var Prestador = new Schema({
-	nome : String,
+	nome: String,
 	sobrenome: String,
 	cpf: String,
 	celular: String,
@@ -53,21 +62,33 @@ var Prestador = new Schema({
 	bairro: String,
 	localidade: String,
 	uf: String,
-	graduacoes: String,
+	graduacao: String,
 	certificacoes: String,
-	user: { type: ObjectId, ref : 'User' },
-	servicos: [{ type: ObjectId, ref : 'Servico' }]
+	cursos: String,
+	user: {
+		type: ObjectId,
+		ref: 'User'
+	},
+	servicos: [{
+		type: ObjectId,
+		ref: 'Servico'
+	}]
 });
 
 var Servico = new Schema({
-	descricao : String,
-	valor : Number,
-	voluntario: Boolean
+	nome: String,
+	descricao: String,
+	categoria: String,
+	valor: Number,
+	voluntario: Boolean,
+	diasDaSemana: [],
+	horarioInicio: String,
+	horarioFim: String
 });
 
-mongoose.model( 'User', User );
-mongoose.model( 'Cliente', Cliente );
-mongoose.model( 'Administrador', Administrador );
-mongoose.model( 'Prestador', Prestador );
-mongoose.model( 'Servico', Servico );
-mongoose.connect( 'mongodb://localhost/worksquad' );
+mongoose.model('User', User);
+mongoose.model('Cliente', Cliente);
+mongoose.model('Administrador', Administrador);
+mongoose.model('Prestador', Prestador);
+mongoose.model('Servico', Servico);
+mongoose.connect('mongodb://localhost/worksquad');

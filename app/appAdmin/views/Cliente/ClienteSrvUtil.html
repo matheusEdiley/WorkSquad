@@ -2,61 +2,42 @@
 	<h2> Serviços utilizados</h2>
 	<p></p>
 </div>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-sm-offset-4 col-sm-8">
-			<div class="row">
-				<div class="col-xs-4 theader free">
-					<div class="ptitle">Grátis </div>
-				</div>
-				<div class="col-xs-4 theader standard">
-					<div class="ptitle">Em domicilio</div>
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+	
+	<div class="row mt">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading"><b>Serviços que foram contratados</b></div>
+				<div class="panel-body">
 					
-				</div>
-				<div class="col-xs-4 theader premium" style="height: 48px">
-					<div class="ptitle">Classificação</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row feature">
-		<div class="col-xs-12 col-sm-4 cfeature infos">
-			José - Carpinteiro
-		</div>
-		<div class="col-xs-12 col-sm-8">
-			<div class="row">
-				<div class="col-xs-4 col-sm-4 ccfreature free">
-					<i class="fa fa-check iconok"></i>
-				</div>
-				<div class="col-xs-4 col-sm-4 ccfreature standard">
-					<i class="fa fa-check iconok"></i>
-				</div>
-				<div class="col-xs-4 col-sm-4 ccfreature premium">
-					<span ng-repeat="rating in ratings">
-						<div ng-model="rating1" star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-					</span>
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="row feature">
-		<div class="col-xs-12 col-sm-4 cfeature infos">
-			José - Carpinteiro
-		</div>
-		<div class="col-xs-12 col-sm-8">
-			<div class="row">
-				<div class="col-xs-4 col-sm-4 ccfreature free">
-					<i class="fa fa-check iconok"></i>
-				</div>
-				<div class="col-xs-4 col-sm-4 ccfreature standard">
-					<i class="fa fa-check iconok"></i>
-				</div>
-				<div class="col-xs-4 col-sm-4 ccfreature premium">
-					<span ng-repeat="rating in ratings">
-						<div star-rating ng-model="rating2" rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-					</span>
+					<div class="content-panel">
+						<table class="table table-striped table-advance table-hover">
+							<thead>
+								<tr>
+									<th> Serviço</th>
+									<th class="hidden-phone"> Prestador </th>
+									<th> Valor </th>
+									<th> Classificação</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="servico in servicos">
+									<td>{{ servico.nome }}</td>
+									<td class="hidden-phone">{{ servico.prestador }}</td>
+									<td>{{ servico.valor }}</td>
+									<td><span ng-repeat="rating in ratings">
+										<div ng-model="rating1" star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+									</span>
+									
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

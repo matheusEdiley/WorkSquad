@@ -6,7 +6,7 @@
 
   var ClienteCadastroCtrl = function($scope, metodosAux, $http, $localStorage, ClienteService, $window, autenticar) {
 
-    var ClienteEntid = autenticar.status.entidade;
+    var ClienteEntid = angular.fromJson($window.sessionStorage.getItem('entidade'));
 
 
     $scope.FlgCPF = true;

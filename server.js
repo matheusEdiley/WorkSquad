@@ -89,7 +89,7 @@ app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
 
-	if (req.body._prestadorId != undefined)
+	if (req.body._clienteId != undefined)
 		cliente._id = req.body._clienteId;
 
 	cliente.nome = req.body.nome;
@@ -103,10 +103,9 @@ app.post('/app/cliente/', function(req, res) {
 	cliente.bairro = req.body.bairro;
 	cliente.localidade = req.body.localidade;
 	cliente.uf = req.body.uf;
-	cliente.user = req.body.user._id;
-	cliente.servicos = req.body.servicos;
+	cliente.user = req.body.userid;
 
-	//console.log(cliente);
+	console.log(cliente);
 	ClienteController.save(cliente, function(clienteret) {
 		res.json(clienteret);
 		console.log(clienteret);
@@ -133,7 +132,6 @@ app.get('/app/cliente/:id', function(req, res) {
 		});
 	}
 });
-
 
 //remover cliente
 app.delete('/app/cliente/remove', function(req, res) {
@@ -219,7 +217,7 @@ app.post('/app/prestador/', function(req, res) {
 	prestador.bairro = req.body.bairro;
 	prestador.localidade = req.body.localidade;
 	prestador.uf = req.body.uf;
-	prestador.user = req.body.user._id;
+	prestador.user = req.body.userid;
 
 	console.log(prestador);
 	PrestadorController.save(prestador, function(prestadorret) {
@@ -233,8 +231,8 @@ app.post('/app/prestador/servico', function(req, res) {
 
 	var prestador = PrestadorController.getPrestadorSchema();
 
-	if ((req.body._prestadorId != undefined) && (req.body._servicoId != undefined)) {
-		PrestadorController.findOne(req.body._prestadorId, function(prestador) {
+	if ((req.body.user._id != undefined) && (req.body._servicoId != undefined)) {
+		PrestadorController.findOne(req.body.user._id, function(prestador) {
 			if (prestador) {
 				console.log(prestador);
 				prestador.servicos.push(req.body._servicoId);
@@ -251,10 +249,10 @@ app.post('/app/prestador/servico', function(req, res) {
 	}
 });
 
-//buscar por ID/Listar todos os prestadors
-app.get('/app/prestador/', function(req, res) {
+//buscar por ID/Listar todos os prestadores
+app.get('/app/prestador/:id', function(req, res) {
 
-	var id = req.param('id');
+	var id = req.params.id;
 	console.log(id);
 	if (id == undefined) {
 		PrestadorController.find(function(err, prestadores) {

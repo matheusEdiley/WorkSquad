@@ -20,7 +20,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localStorage', '$state', '$window', 'ClienteService', function($scope, metodosAux, $http, $localStorage, $state, $window, ClienteService) {
+mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localStorage', '$state', '$window', 'ClienteService','PrestadorService', function($scope, metodosAux, $http, $localStorage, $state, $window, ClienteService, PrestadorService) {
 
 	var onError = function(error) {
 		$scope.error = error.data;
@@ -29,12 +29,12 @@ mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localSto
 	var onCadastroLocalizado = function(callback) {
 
 		$state.go("appAdmin.Main");
-		
+
 	};
 
 	var onLoginRealizado = function(callback) {
 
-		//CloseModal();
+		CloseModal();
 
 		$window.sessionStorage.setItem('usuario', angular.toJson(callback.data.user));
 		$window.sessionStorage.setItem('token', callback.data.token);
@@ -42,7 +42,10 @@ mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localSto
 		if (callback.data.user.tipo == "Cliente") {
 			ClienteService.searchCliente(callback.data.user)
 				.then(onCadastroLocalizado, onError);
-		};
+		} else if (callback.data.user.tipo == "Prestador") {
+			PrestadorService.searchPrestador(callback.data.user)
+				.then(onCadastroLocalizado, onError);
+		}
 	};
 
 	$scope.LimparLogin = function() {
