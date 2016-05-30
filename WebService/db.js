@@ -91,4 +91,4 @@ mongoose.model('Cliente', Cliente);
 mongoose.model('Administrador', Administrador);
 mongoose.model('Prestador', Prestador);
 mongoose.model('Servico', Servico);
-mongoose.connect('mongodb://localhost/worksquad');
+mongoose.connect('mongodb://localhost/worksquad2');

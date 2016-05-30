@@ -10,8 +10,12 @@ mainApp.service('ServicosService', function($http, autenticar) {
 		return $http.get('/app/servico/' + servico._id);
 	}
 
+	this.allServices = function(){
+		return $http.get('/app/servico/', undefined);
+	}
+
 	this.addServicePrest = function(prestador) {
 		return $http.post('/app/prestador/servico/', prestador);
 	}
-	
+
 });

@@ -23,7 +23,7 @@
 
 		var onCadastro = function(callback) {
 
-			PrestEntid.servicos = PrestEntid.servicos.concat(callback.data);
+			PrestEntid.servicos = PrestEntid.servicos.concat(callback.data._id);
 			ServicosService.addServicePrest(PrestEntid).then(onSalvo, onError);
 
 		}
