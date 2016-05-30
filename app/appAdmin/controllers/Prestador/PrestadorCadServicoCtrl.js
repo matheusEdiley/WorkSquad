@@ -6,7 +6,7 @@
 	var PrestadorCadServicoCtrl = function($scope, $http, ServicosService, $window) {
 
 		var PrestEntid = $window.sessionStorage.getItem('entidade');
-		
+		$scope.Flg = false;
 		if (PrestEntid != undefined) {
 			PrestEntid = angular.fromJson(PrestEntid);
 		}

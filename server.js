@@ -155,6 +155,12 @@ app.post('/app/servico/', function(req, res) {
 	servico.descricao = req.body.descricao;
 	servico.valor = req.body.valor;
 	servico.voluntario = req.body.voluntario;
+	servico.nome = req.body.nome;
+	servico.categoria = req.body.categoria;
+	servico.voluntario = req.body.voluntario;
+	servico.diasDaSemana = req.body.diasDaSemana;
+	servico.horarioInicio = req.body.horarioInicio;
+	servico.horarioFim = req.body.horarioFim;
 
 	console.log(servico);
 	ServicoController.save(servico, function(servicoret) {

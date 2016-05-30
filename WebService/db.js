@@ -79,7 +79,7 @@ var Servico = new Schema({
 	nome: String,
 	descricao: String,
 	categoria: String,
-	valor: Number,
+	valor: String,
 	voluntario: Boolean,
 	diasDaSemana: [],
 	horarioInicio: String,
