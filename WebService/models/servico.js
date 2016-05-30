@@ -4,12 +4,23 @@ var mongoose = require('mongoose');
 var Servico = mongoose.model('Servico');
 
 exports.save = function(servico, cb) {
-	servico.save(function(err, servico) {
-		if (err)
-			return err;
-		console.log(servico);
-		return cb(servico);
-	});
+	if (servico._id == undefined) {
+		servico.save(function(err, servico) {
+			if (err) {
+				console.log(err);
+				return err;
+			}
+			return cb(servico);
+		});
+	} else {
+		Servico.findByIdAndUpdate(servico._id, servico, function(err, servicoReturn) {
+			if (err) {
+				console.log(err);
+				return err;
+			}
+			return cb(servico);
+		});
+	}
 }
 
 exports.find = function(cb) {

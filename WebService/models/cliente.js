@@ -4,12 +4,22 @@ var mongoose = require('mongoose');
 var Cliente = mongoose.model('Cliente');
 
 exports.save = function(cliente, cb) {
-	cliente.save(function(err, cliente) {
-		if (err)
-			return err;
-		console.log(cliente);
-		return cb(cliente);
-	});
+	if (cliente._id == undefined) {
+		cliente.save(function(err, cliente) {
+			if (err)
+				return err;
+			console.log(cliente);
+			return cb(cliente);
+		});
+	}else {
+		Cliente.findByIdAndUpdate(cliente._id, cliente, function(err, clientes) {
+			if (err) {
+				console.log(err);
+				return err;
+			}
+			return cb(cliente);	
+		});
+	}
 }
 
 exports.find = function(cb) {

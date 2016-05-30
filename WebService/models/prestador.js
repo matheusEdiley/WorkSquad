@@ -3,13 +3,22 @@ var mongoose = require('mongoose');
 
 var Prestador = mongoose.model('Prestador');
 
-exports.save = function(Prestador, cb) {
-	Prestador.save(function(err, Prestador) {
-		if (err)
-			return err;
-		console.log(Prestador);
-		return cb(Prestador);
-	});
+exports.save = function(prestador, cb) {
+	if (prestador._id == undefined) {
+		prestador.save(function(err, prestador) {
+			if (err)
+				return err;
+			console.log(prestador);
+			return cb(prestador);
+		});
+	} else {
+		Prestador.findByIdAndUpdate(prestador._id, prestador, function(err, prestadorRet){
+			if (err)
+				return err;
+			console.log(prestador);
+			return cb(prestador);
+		});
+	}
 }
 
 exports.find = function(cb) {
