@@ -13,7 +13,7 @@ exports.save = function(servico, cb) {
 			return cb(servico);
 		});
 	} else {
-		Servico.findByIdAndUpdate(servico._id, servico, function(err, servicoReturn) {
+		Servico.findByIdAndUpdate(servico._id, servico.toObject(), function(err, servicoReturn) {
 			if (err) {
 				console.log(err);
 				return err;

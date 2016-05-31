@@ -3,16 +3,20 @@ var mongoose = require('mongoose');
 
 var Cliente = mongoose.model('Cliente');
 
-exports.save = function(cliente, cb) {
-	if (cliente._id == undefined) {
+exports.save = function(cliente, isUpdate, cb) {
+	if (!isUpdate) {
+		console.log("inserir");
 		cliente.save(function(err, cliente) {
-			if (err)
+			if (err) {
+				console.log(err);
 				return err;
+			}
 			console.log(cliente);
 			return cb(cliente);
 		});
 	}else {
-		Cliente.findByIdAndUpdate(cliente._id, cliente, function(err, clientes) {
+		console.log("update");
+		Cliente.findByIdAndUpdate(cliente._id, cliente.toObject(), function(err, clientes) {
 			if (err) {
 				console.log(err);
 				return err;

@@ -12,7 +12,7 @@ exports.save = function(prestador, cb) {
 			return cb(prestador);
 		});
 	} else {
-		Prestador.findByIdAndUpdate(prestador._id, prestador, function(err, prestadorRet){
+		Prestador.findByIdAndUpdate(prestador._id, prestador.toObject(), function(err, prestadorRet){
 			if (err)
 				return err;
 			console.log(prestador);

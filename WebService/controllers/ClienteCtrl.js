@@ -1,8 +1,8 @@
 var express = require('express')
 var Cliente = require('../models/cliente')
 
-exports.save = function(clienteScheme, cb) {
-	Cliente.save(clienteScheme, function(cliente){
+exports.save = function(clienteScheme, isUpdate, cb) {
+	Cliente.save(clienteScheme, isUpdate, function(cliente){
 		return cb(cliente);
 	})
 }

@@ -88,9 +88,11 @@ app.post('/login', function(req, res) {
 app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
-
-	if (req.body._clienteId != undefined)
+	var isUpdate = false;
+	if (req.body._clienteId != undefined) {
 		cliente._id = req.body._clienteId;
+		isUpdate = true;
+	}
 
 	cliente.nome = req.body.nome;
 	cliente.sobrenome = req.body.sobrenome;
@@ -106,7 +108,7 @@ app.post('/app/cliente/', function(req, res) {
 	cliente.user = req.body.userid;
 
 	console.log(cliente);
-	ClienteController.save(cliente, function(clienteret) {
+	ClienteController.save(cliente, isUpdate, function(clienteret) {
 		res.json(clienteret);
 		console.log(clienteret);
 	})
