@@ -34,7 +34,7 @@
 		$scope.SalvarServico = function(servico) {
 
 			servico.diasDaSemana = $scope.tags;
-			servico.prestador = PrestEntid.nome + ' ' + PrestEntid.sobrenome ;
+			servico.prestador = PrestEntid._id;
 			ServicosService.addService(servico).then(onCadastro, onError);
 		}
 	}
