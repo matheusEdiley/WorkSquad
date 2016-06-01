@@ -23,24 +23,15 @@ exports.save = function(servico, isUpdate, cb) {
 	}
 }
 
-exports.findByFiltro = function(categoria, idPrestador, cb) {
-	if (idPrestador != undefined) {
-		Servico.find({
-			categoria: new RegExp(categoria, 'i'),
-			prestador: idPrestador
-		}).populate('prestador').exec(function(err, Prestador) {
-			return cb(Prestador);
-		});
-	}else {
-		Servico.find({
-			categoria: new RegExp(categoria, 'i')
-		}).populate('prestador').exec(function(err, Prestador) {
-			if (err){
-				console.log(err);
-			}
-			return cb(Prestador);
-		});
-	}
+exports.findByFiltro = function(categoria, cb) {
+	Servico.find({
+		categoria: new RegExp(categoria, 'i')
+	}).populate('prestador').exec(function(err, Prestador) {
+		if (err) {
+			console.log(err);
+		}
+		return cb(Prestador);
+	});
 }
 
 

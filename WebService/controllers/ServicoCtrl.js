@@ -13,8 +13,8 @@ exports.find = function(cb) {
 	});
 }
 
-exports.findByFiltro = function(categoria, idPrestador, cb) {
-	Servico.findByFiltro(categoria, idPrestador, function(servicos){
+exports.findByFiltro = function(categoria, cb) {
+	Servico.findByFiltro(categoria, function(servicos){
 		return cb(servicos);
 	});
 }

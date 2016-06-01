@@ -187,9 +187,8 @@ app.get('/app/servicosPrestador/', function(req, res) {
 });
 
 app.get('/app/servicosFiltro/', function(req, res) {
-	var idPrestador = req.param('idPrestador');
 	var categoria = req.param('categoria');
-	ServicoController.findByFiltro(categoria, idPrestador, function(servicos) {
+	ServicoController.findByFiltro(categoria, function(servicos) {
 		res.json(servicos);
 	});
 });
