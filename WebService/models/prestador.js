@@ -5,7 +5,7 @@ var Prestador = mongoose.model('Prestador');
 var Cliente = mongoose.model('Cliente');
 
 exports.save = function(prestador, isUpdate, cb) {
-	if (isUpdate) {
+	if (!isUpdate) {
 		prestador.save(function(err, prestador) {
 			if (err)
 				return err;
