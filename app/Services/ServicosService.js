@@ -10,7 +10,11 @@ mainApp.service('ServicosService', function($http, autenticar) {
 		return $http.get('/app/servico?id=' + id);
 	}
 
-	this.allServices = function(){
+	this.pesquisarServ = function(cod, tipo) {
+		return $http.get('/app/servicosFiltro?' + tipo + '=' + cod);
+	}
+
+	this.allServices = function() {
 		return $http.get('/app/servico/', undefined);
 	}
 

@@ -19,7 +19,7 @@
 
       $scope.servicos = callback.data;
       // for (serv in $scope.servicos) {
-      
+
       // }
     }
 
@@ -29,6 +29,19 @@
 
       $scope.filtro = parametro;
 
+    }
+
+    $scope.Pesquisar = function(value) {
+      
+      var filtros = "";
+      
+      if ($scope.filtro == "Categoria") {
+        filtros = "categoria";
+      } else {
+        filtros = "prestador";
+      }
+
+      ServicosService.pesquisarServ(value, filtros).then(onSearch, onError);
     }
 
     var onServicoCadastrado = function(callback) {
@@ -42,6 +55,8 @@
     $scope.ContratarServico = function(servico) {
 
       ClienteEntid.servicos = ClienteEntid.servicos.concat(servico._id);
+
+      $window.sessionStorage.setItem('entidade', angular.toJson(ClienteEntid));
 
       ClienteEntid._clienteId = ClienteEntid._id;
       ClienteEntid.userid = ClienteEntid.user._id;
