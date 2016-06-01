@@ -170,7 +170,7 @@ app.post('/app/servico/', function(req, res) {
 	servico.horarioInicio = req.body.horarioInicio;
 	servico.horarioFim = req.body.horarioFim;
 	servico.prestador = req.body.prestador;
-	
+
 	console.log(servico);
 	ServicoController.save(servico, isUpdate, function(servicoret) {
 		res.json(servicoret);
@@ -181,8 +181,16 @@ app.post('/app/servico/', function(req, res) {
 app.get('/app/servicosPrestador/', function(req, res) {
 
 	var id = req.param('id');
-	PrestadorController.findServicosContratados(id, function(prestadores){
+	PrestadorController.findServicosContratados(id, function(prestadores) {
 		res.send(prestadores);
+	});
+});
+
+app.get('/app/servicosFiltro/', function(req, res) {
+	var idPrestador = req.param('idPrestador');
+	var categoria = req.param('categoria');
+	ServicoController.findByFiltro(categoria, idPrestador, function(servicos) {
+		res.json(servicos);
 	});
 });
 
@@ -226,8 +234,12 @@ app.post('/app/prestador/', function(req, res) {
 
 	var prestador = PrestadorController.getPrestadorSchema();
 
-	if (req.body._prestadorId != undefined)
+	var isUpdate = false;
+
+	if (req.body._prestadorId != undefined) {
 		prestador._id = req.body._prestadorId;
+		isUpdate = true;
+	}
 
 	prestador.nome = req.body.nome;
 	prestador.sobrenome = req.body.sobrenome;
@@ -244,7 +256,7 @@ app.post('/app/prestador/', function(req, res) {
 	prestador.servicos = req.body.servicos;
 
 	console.log(prestador);
-	PrestadorController.save(prestador, function(prestadorret) {
+	PrestadorController.save(prestador, isUpdate, function(prestadorret) {
 		res.json(prestadorret);
 		console.log(prestadorret);
 	})

@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var Prestador = mongoose.model('Prestador');
 var Cliente = mongoose.model('Cliente');
 
-exports.save = function(prestador, cb) {
-	if (prestador._id == undefined) {
+exports.save = function(prestador, isUpdate, cb) {
+	if (isUpdate) {
 		prestador.save(function(err, prestador) {
 			if (err)
 				return err;
@@ -44,9 +44,10 @@ exports.remove = function(id) {
 
 exports.findServicosContratados = function(id, cb) {
 	Cliente.find({
-		"servicos.prestador._id" : id
+		"servicos.prestador" : id
 	}).populate("servicos servicos.prestador").exec(function(err, servicos){
 		console.log("busca id: " + id);
+		console.log(servicos);
 		return cb(servicos);
 	});
 }

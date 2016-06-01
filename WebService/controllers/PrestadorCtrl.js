@@ -1,8 +1,8 @@
 var express = require('express')
 var Prestador = require('../models/prestador')
 
-exports.save = function(PrestadorScheme, cb) {
-	Prestador.save(PrestadorScheme, function(Prestador){
+exports.save = function(PrestadorScheme, isUpdate, cb) {
+	Prestador.save(PrestadorScheme, isUpdate, function(Prestador){
 		return cb(Prestador);
 	})
 }
@@ -24,7 +24,7 @@ exports.remove = function(id) {
 }
 
 exports.findServicosContratados = function(id, cb) {
-	Prestador.findServicosContratados(id, function(err, prestadores){
+	Prestador.findServicosContratados(id, function(prestadores){
 		return cb(prestadores);
 	});
 }
