@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 
 var Servico = mongoose.model('Servico');
 
-exports.save = function(servico, cb) {
-	if (servico._id == undefined) {
+exports.save = function(servico, isUpdate, cb) {
+	if (!isUpdate) {
 		servico.save(function(err, servico) {
 			if (err) {
 				console.log(err);

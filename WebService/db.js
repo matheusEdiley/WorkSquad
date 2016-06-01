@@ -78,7 +78,10 @@ var Prestador = new Schema({
 var Servico = new Schema({
 	nome: String,
 	descricao: String,
-	prestador: String,
+	prestador: {
+		type: ObjectId,
+		ref: 'Prestador'
+	},
 	categoria: String,
 	valor: String,
 	voluntario: Boolean,

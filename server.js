@@ -88,9 +88,11 @@ app.post('/login', function(req, res) {
 app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
-
-	if (req.body._clienteId != undefined)
+	var isUpdate = false;
+	if (req.body._clienteId != undefined) {
 		cliente._id = req.body._clienteId;
+		isUpdate = true;
+	}
 
 	cliente.nome = req.body.nome;
 	cliente.sobrenome = req.body.sobrenome;
@@ -107,7 +109,7 @@ app.post('/app/cliente/', function(req, res) {
 	cliente.servicos = req.body.servicos;
 
 	console.log(cliente);
-	ClienteController.save(cliente, function(clienteret) {
+	ClienteController.save(cliente, isUpdate, function(clienteret) {
 		res.json(clienteret);
 		console.log(clienteret);
 	})
@@ -151,8 +153,12 @@ app.post('/app/servico/', function(req, res) {
 
 	var servico = ServicoController.getServicoSchema();
 
-	if (req.body._servicoId != undefined)
+	var isUpdate = false;
+
+	if (req.body._servicoId != undefined) {
 		servico._id = req.body._servicoId;
+		isUpdate = true;
+	}
 
 	servico.descricao = req.body.descricao;
 	servico.valor = req.body.valor;
@@ -166,10 +172,18 @@ app.post('/app/servico/', function(req, res) {
 	servico.prestador = req.body.prestador;
 	
 	console.log(servico);
-	ServicoController.save(servico, function(servicoret) {
+	ServicoController.save(servico, isUpdate, function(servicoret) {
 		res.json(servicoret);
 		console.log(servicoret);
 	})
+});
+
+app.get('/app/servicosPrestador/', function(req, res) {
+
+	var id = req.param('id');
+	PrestadorController.findServicosContratados(id, function(prestadores){
+		res.send(prestadores);
+	});
 });
 
 //buscar por ID/Listar todos os serviços

@@ -23,6 +23,12 @@ exports.remove = function(id) {
 	Prestador.remove(id);
 }
 
+exports.findServicosContratados = function(id, cb) {
+	Prestador.findServicosContratados(id, function(err, prestadores){
+		return cb(prestadores);
+	});
+}
+
 exports.getPrestadorSchema = function() {
 	return Prestador.getPrestadorSchema();
 }

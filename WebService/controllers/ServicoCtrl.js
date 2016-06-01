@@ -1,8 +1,8 @@
 var express = require('express')
 var Servico = require('../models/servico')
 
-exports.save = function(servicoScheme, cb) {
-	Servico.save(servicoScheme, function(servico){
+exports.save = function(servicoScheme, isUpdate, cb) {
+	Servico.save(servicoScheme, isUpdate, function(servico){
 		return cb(servico);
 	});
 }
