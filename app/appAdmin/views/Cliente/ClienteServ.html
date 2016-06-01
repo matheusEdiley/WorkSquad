@@ -15,17 +15,15 @@
           <span id="search_concept">{{ filtro }}</span> <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a ng-click="SelecionarFiltro('Palavras chave')">Palavras chave</a></li>
             <li><a ng-click="SelecionarFiltro('Categoria')">Categoria</a></li>
-            <li><a ng-click="SelecionarFiltro('Disponibilidade')">Disponibilidade</a></li>
             <li class="divider"></li>
             <li><a ng-click="SelecionarFiltro('Prestador')">Prestador</a></li>
           </ul>
         </div>
         <input type="hidden" name="search_param" value="all" id="search_param">
-        <input type="text" class="form-control" name="x" placeholder="Procurar por...">
+        <input type="text" class="form-control" ng-model="value" name="x" placeholder="Procurar por...">
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+          <button class="btn btn-primary" ng-click="Pesquisar(value)" type="button"><span class="glyphicon glyphicon-search"></span></button>
         </span>
       </div>
     </div

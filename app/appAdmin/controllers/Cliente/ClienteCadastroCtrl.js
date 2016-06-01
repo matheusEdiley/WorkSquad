@@ -62,6 +62,8 @@
         
       }
 
+      $window.sessionStorage.setItem('entidade', angular.toJson(cliente));
+
       ClienteService.addCliente(cliente)
         .then(onSalvo, onError);
       $scope.Flg = true;
