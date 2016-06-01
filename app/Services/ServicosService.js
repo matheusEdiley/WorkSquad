@@ -6,8 +6,8 @@ mainApp.service('ServicosService', function($http, autenticar) {
 		return $http.post('/app/servico/', servico);
 	}
 
-	this.searchService = function(servico) {
-		return $http.get('/app/servico/' + servico._id);
+	this.searchService = function(id) {
+		return $http.get('/app/servico?id=' + id);
 	}
 
 	this.allServices = function(){
