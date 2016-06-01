@@ -14,4 +14,7 @@ mainApp.service('ClienteService', function($http, autenticar) {
 		return $http.get('/app/cliente/' + user._id);
 	}
 
+	this.allClientes = function() {
+		return $http.get('/app/cliente/undefined');
+	}
 });

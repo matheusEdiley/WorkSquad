@@ -13,7 +13,7 @@
 
         $scope.cursos = ['informática básica', 'digitação'];
         $scope.certificacoes = ['CRM', 'SAP'];
-
+        $scope.FlgSalvo = false;
         $scope.preventchange = false;
         $scope.pre = {};
 
@@ -44,7 +44,7 @@
         };
 
         var onSalvo = function(callback) {
-            var a = callback;
+            $scope.FlgSalvo = true;
         };
 
         $scope.Salvar = function(pre) {

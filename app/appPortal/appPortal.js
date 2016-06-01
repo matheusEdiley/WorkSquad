@@ -20,7 +20,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localStorage', '$state', '$window', 'ClienteService','PrestadorService', function($scope, metodosAux, $http, $localStorage, $state, $window, ClienteService, PrestadorService) {
+mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localStorage', '$state', '$window', 'ClienteService', 'PrestadorService', function($scope, metodosAux, $http, $localStorage, $state, $window, ClienteService, PrestadorService) {
 
 	var onError = function(error) {
 		$scope.error = error.data;
@@ -45,6 +45,8 @@ mainApp.controller('appPortalCtrl', ['$scope', 'metodosAux', '$http', '$localSto
 		} else if (callback.data.user.tipo == "Prestador") {
 			PrestadorService.searchPrestador(callback.data.user)
 				.then(onCadastroLocalizado, onError);
+		} else {
+			$state.go("appAdmin.AdmGerenUsu");
 		}
 	};
 

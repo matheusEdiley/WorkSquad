@@ -118,7 +118,7 @@ app.post('/app/cliente/', function(req, res) {
 app.get('/app/cliente/:id', function(req, res) {
 	var id = req.params.id;
 	console.log(id);
-	if (id == undefined) {
+	if (id == "undefined") {
 		ClienteController.find(function(err, clientes) {
 			if (err) {
 				res.send("Ocorreu um erro no servidor. Contate o administrador.");
@@ -136,7 +136,7 @@ app.get('/app/cliente/:id', function(req, res) {
 });
 
 //remover cliente
-app.delete('/app/cliente/remove', function(req, res) {
+app.post('/app/cliente/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
 		ClienteController.remove(id);
@@ -264,7 +264,7 @@ app.get('/app/prestador/:id', function(req, res) {
 
 	var id = req.params.id;
 	console.log(id);
-	if (id == undefined) {
+	if (id == "undefined") {
 		PrestadorController.find(function(err, prestadores) {
 			if (err) {
 				res.send("Ocorreu um erro no servidor. Contate o administrador.");
@@ -282,7 +282,7 @@ app.get('/app/prestador/:id', function(req, res) {
 });
 
 //remover prestador
-app.delete('/app/prestador/remove', function(req, res) {
+app.post('/app/prestador/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
 		PrestadorController.remove(id);

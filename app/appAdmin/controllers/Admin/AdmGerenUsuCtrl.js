@@ -4,50 +4,70 @@
 (function() {
     var mainApp = angular.module("MainApp");
 
-    var AdmGerenUsuCtrl = function($scope, metodosAux, $http) {
+    var AdmGerenUsuCtrl = function($scope, metodosAux, $http, ClienteService, PrestadorService) {
 
-        
-        var onClienteGetCompleted = function(response){
+        $scope.FlgCliente = true;
+        $scope.FlgPrest = false;
+
+        var onClienteGetCompleted = function(response) {
+
             $scope.Clientes = response.data;
-            console.log($scope.Clientes);
+
+        }
+
+        var onPrestadorGetCompleted = function(response) {
+            $scope.Prestadores = response.data;
         }
 
         var refresh = function() {
-            $http.get('/Clientes')
+
+            ClienteService.allClientes()
                 .then(onClienteGetCompleted, onError);
-            console.log('Response received...');
+
+            PrestadorService.allPrestador()
+                .then(onPrestadorGetCompleted, onError);
+
         }
-        
+
+        $scope.ChangTab = function(index) {
+            if (index == 1) {
+                $scope.FlgCliente = true;
+                $scope.FlgPrest = false;
+            } else {
+                $scope.FlgCliente = false;
+                $scope.FlgPrest = true;
+            }
+        }
 
         refresh();
+
         //common error function
         var onError = function(error) {
             $scope.error = error.data;
         };
-        
+
         //Deletar um Cliente
-        $scope.deleteCliente = function(id){
+        $scope.deleteCliente = function(id) {
             $http.delete('/deleteCliente/' + id)
-                .then(onClienteDeleteCompleted,  onError);
-            console.log(id);
+                .then(onClienteDeleteCompleted, onError);
         };
 
-         var onClienteDeleteCompleted = function(response){
+        var onClienteDeleteCompleted = function(response) {
             $scope.cliente = response.data;
             console.log(response.data);
             refresh();
         };
 
         //Alterar Status
-        $scope.updateCliente = function(cliente, status){
+        $scope.updateCliente = function(cliente, status) {
             cliente.cadStatus = status;
             $http.put("/updateCliente", cliente)
                 .then(onUpdateClienteCompleted, onError);
-                    console.log(cliente);
+            console.log(cliente);
         };
 
-        var onUpdateClienteCompleted = function(response){
-            $scope.cliente = null;//response.data;
+        var onUpdateClienteCompleted = function(response) {
+            $scope.cliente = null; //response.data;
             console.log(response.data);
             refresh();
         };

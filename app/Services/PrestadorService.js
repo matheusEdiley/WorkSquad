@@ -10,4 +10,7 @@ mainApp.service('PrestadorService', function($http, autenticar) {
 		return $http.get('/app/prestador/' + user._id);
 	}
 
+	this.allPrestador = function() {
+		return $http.get('/app/prestador/undefined');
+	}
 });

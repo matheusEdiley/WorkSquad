@@ -3,6 +3,11 @@
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form role="form">
         <h2>Finalize o cadastro<br /><small>  Por favor, confirme os dados e finalize o cadastro.</small></h2>
+        <br />
+        <div ng-if="FlgSalvo" class="alert alert-success fade in" style="margin-top:18px;" focus>
+          <a href="" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+          <strong>Salvo com sucesso!</strong> Serviço salvo com sucesso.
+        </div>
         <hr class="colorgraph">
         Caso queira cadastrar novamente os dados,clique em cancelar e volte para as informações iniciais
         <hr class="colorgraph">

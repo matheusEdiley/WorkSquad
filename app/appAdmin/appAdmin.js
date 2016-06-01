@@ -52,7 +52,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 		url: "/AdmGerenUsu",
 		templateUrl: "app/appAdmin/views/Admin/AdmGerenUsu.html",
 		controller: 'AdmGerenUsuCtrl',
-		tipo: 'Administrador'
+		tipo: 'Admin'
 	})
 
 	.state('appAdmin.Main', {
