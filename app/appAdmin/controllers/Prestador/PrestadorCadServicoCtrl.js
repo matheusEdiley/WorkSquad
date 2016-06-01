@@ -3,7 +3,7 @@
 (function() {
 	var mainApp = angular.module("MainApp");
 
-	var PrestadorCadServicoCtrl = function($scope, $http, ServicosService, $window) {
+	var PrestadorCadServicoCtrl = function($scope, $http, ServicosService, $window, PrestadorService) {
 
 		var PrestEntid = $window.sessionStorage.getItem('entidade');
 		$scope.Flg = false;
@@ -17,20 +17,24 @@
 			$scope.error = error.data;
 		};
 
-		var onSalvo = function(callback){
+		var onSalvo = function(callback) {
 			$scope.Flg = true;
 		}
 
 		var onCadastro = function(callback) {
+			
+			PrestEntid._prestadorId = PrestEntid._id;
+			PrestEntid.userid = PrestEntid.user._id;
 
 			PrestEntid.servicos = PrestEntid.servicos.concat(callback.data._id);
-			ServicosService.addServicePrest(PrestEntid).then(onSalvo, onError);
+			PrestadorService.addPrestador(PrestEntid).then(onSalvo, onError);
 
 		}
 
 		$scope.SalvarServico = function(servico) {
-			
+
 			servico.diasDaSemana = $scope.tags;
+			servico.prestador = PrestEntid.nome + ' ' + PrestEntid.sobrenome ;
 			ServicosService.addService(servico).then(onCadastro, onError);
 		}
 	}

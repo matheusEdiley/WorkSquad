@@ -15,20 +15,22 @@
 							<thead>
 								<tr>
 									<th> Serviço</th>
-									<th class="hidden-phone"> Prestador </th>
-									<th> Valor </th>
-									<th> Classificação</th>
+									<th class="hidden-phone"> Categoria </th>
+									<th> Valor/Hora </th>
+									<th> Voluntário</th>
 									
 								</tr>
 							</thead>
 							<tbody>
 								<tr ng-repeat="servico in servicos">
 									<td>{{ servico.nome }}</td>
-									<td class="hidden-phone">{{ servico.prestador }}</td>
+									<td class="hidden-phone">{{ servico.categoria }}</td>
 									<td>{{ servico.valor }}</td>
-									<td><span ng-repeat="rating in ratings">
+									<td>
+									<span class="label label-info label-mini">{{ servico.voluntario ? 'Sim' : 'Não' }}</span>
+									<!-- <span ng-repeat="rating in ratings">
 										<div ng-model="rating1" star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-									</span>
+									</span> -->
 									
 								</td>
 								

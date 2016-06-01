@@ -3,7 +3,7 @@ var Cliente = require('../models/cliente')
 
 exports.save = function(clienteScheme, isUpdate, cb) {
 	Cliente.save(clienteScheme, isUpdate, function(cliente){
-		return cb(cliente);
+		//return cb(cliente);
 	})
 }
 

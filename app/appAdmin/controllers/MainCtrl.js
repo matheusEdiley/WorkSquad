@@ -17,17 +17,24 @@
 
       $window.sessionStorage.setItem('entidade', angular.toJson(callback.data[0]));
 
-      $scope.nomecompleto = "Matheus" + " " + "Ediley";
-      $scope.cep = "34515-470";
-      $scope.logradouro = "Rua José Machado Chaves";
-      $scope.tipo = "Cliente";
-      $scope.cpf = "125.622.936-90";
-      $scope.email = "matheus.ediley@gmail.com";
-      $scope.bairro = "Campo Santo Antônio";
-      $scope.cidade = "Sabará";
-      $scope.telefone = "(31) 3674-7677";
-      $scope.celular = "(98) 8975-4565";
-      $scope.linkCad = "appAdmin.ClienteCadastro";
+      var ent = callback.data[0];
+
+      $scope.nomecompleto = ent.nome + " " + ent.sobrenome;
+      $scope.cep = ent.cep;
+      $scope.logradouro = ent.logradouro;
+      $scope.tipo = ent.user.tipo;
+      $scope.cpf = ent.cpf;
+      $scope.email = ent.user.email;
+      $scope.bairro = ent.bairro;
+      $scope.localidade = ent.localidade;
+      $scope.telefone = ent.telefone;
+      $scope.celular = ent.celular;
+
+      if (ent.user.tipo == "Cliente") {
+        $scope.linkCad = "appAdmin.ClienteCadastro";
+      } else if (ent.user.tipo == "Prestador") {
+        $scope.linkCad = "appAdmin.PrestadorCadastro";
+      } 
 
     };
 
@@ -38,7 +45,7 @@
         .then(onCadastroLocalizado, onError);
 
     } else if (user.tipo == "Prestador") {
-     
+
       PrestadorService.searchPrestador(user)
         .then(onCadastroLocalizado, onError);
 

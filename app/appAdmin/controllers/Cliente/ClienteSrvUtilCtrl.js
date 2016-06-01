@@ -4,14 +4,20 @@
 (function() {
 	var mainApp = angular.module("MainApp");
 
-	var ClienteSrvUtilCtrl = function($scope) {
+	var ClienteSrvUtilCtrl = function($scope, ServicosService) {
 
-		$scope.servicos = [{
-			"nome": "Carpintaria",
-			"prestador": "José",
-			"valor": "34,90"
+		var onError = function(error) {
+
+			$scope.error = error.data;
 			
-		}];
+		};
+
+		var onSearch = function(callback) {
+
+			$scope.servicos = callback.data;
+		}
+
+		ServicosService.allServices().then(onSearch, onError);
 
 		$scope.rating = 0;
 		$scope.ratings = [{

@@ -4,7 +4,7 @@
 (function() {
   var mainApp = angular.module("MainApp");
 
-  var ClienteServCtrl = function($scope, metodosAux, $http, ServicosService, $window) {
+  var ClienteServCtrl = function($scope, metodosAux, $http, ServicosService, $window, ClienteService) {
 
     var ClienteEntid = angular.fromJson($window.sessionStorage.getItem('entidade'));
 
@@ -16,7 +16,11 @@
     };
 
     var onSearch = function(callback) {
+
       $scope.servicos = callback.data;
+      // for (serv in $scope.servicos) {
+      
+      // }
     }
 
     ServicosService.allServices().then(onSearch, onError);
@@ -31,11 +35,22 @@
       $scope.Flg = true;
     }
 
+    var onSalvo = function(callback) {
+      var a = callback;
+    };
+
     $scope.ContratarServico = function(servico) {
 
-      ClienteEntid.servicos = ClienteEntid.servicos.concat(servico);
+      ClienteEntid.servicos = ClienteEntid.servicos.concat(servico._id);
 
+      ClienteEntid._clienteId = ClienteEntid._id;
+      ClienteEntid.userid = ClienteEntid.user._id;
+
+      ClienteService.addCliente(ClienteEntid)
+        .then(onSalvo, onError);
+      $scope.Flg = true;
     }
+
   }
   mainApp.controller('ClienteServCtrl', ClienteServCtrl);
 }());

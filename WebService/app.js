@@ -51,6 +51,30 @@ app.get('/app/user', function(req, res) {
 	}
 });
 
+//buscar por ID/Listar todos os serviços
+app.get('/app/servico/', function(req, res) {
+
+	var id = req.param('id');
+	console.log(id);
+	if (id == undefined) {
+		ServicoController.find(function(err, servicos) {
+			if (err) {
+				res.send("Ocorreu um erro no servidor. Contate o administrador.");
+			} else if (servicos) {
+				res.send(servicos);
+			}
+		});
+	} else {
+		ServicoController.findOne(id, function(servico) {
+			if (servico) {
+				res.send(servico);
+			} else {
+				res.send('');
+			}
+		});
+	}
+});
+
 app.get('/app/user/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {

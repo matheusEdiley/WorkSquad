@@ -6,11 +6,15 @@
 
   var ClienteCadastroCtrl = function($scope, metodosAux, $http, $localStorage, ClienteService, $window, autenticar) {
 
-    var ClienteEntid = angular.fromJson($window.sessionStorage.getItem('entidade'));
+    var ClienteEntid = $window.sessionStorage.getItem('entidade');
 
+    if (ClienteEntid != "undefined") {
+      ClienteEntid = angular.fromJson(ClienteEntid);
+    }
 
     $scope.FlgCPF = true;
     $scope.FlgSenha = "primary";
+    $scope.Flg = false;
 
     var onError = function(error) {
       $scope.error = error.data;
@@ -38,7 +42,6 @@
 
     };
 
-    //add new person
     var onAddClienteCompleted = function(response) {
       $scope.Cliente = response.data;
       console.log(response.data);
@@ -47,12 +50,24 @@
 
     $scope.SalvarCadastro = function(cliente) {
 
-      cliente._clienteId = ClienteEntid._id;
-      cliente.userid = ClienteEntid.user._id;
+      if (ClienteEntid != "undefined") {
+
+        cliente._clienteId = ClienteEntid._id;
+        cliente.userid = ClienteEntid.user._id;
+
+      } else {
+
+        var user = angular.fromJson($window.sessionStorage.getItem('usuario'));
+        cliente.userid = user._id;
+        
+      }
 
       ClienteService.addCliente(cliente)
         .then(onSalvo, onError);
+      $scope.Flg = true;
     };
+
+
 
     $scope.LimparCampos = function() {
       $scope.cliente.nome = '';

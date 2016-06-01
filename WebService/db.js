@@ -78,6 +78,7 @@ var Prestador = new Schema({
 var Servico = new Schema({
 	nome: String,
 	descricao: String,
+	prestador: String,
 	categoria: String,
 	valor: String,
 	voluntario: Boolean,

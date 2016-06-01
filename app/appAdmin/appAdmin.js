@@ -28,6 +28,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 	.state('appAdmin.PrestadorCadastro', {
+			
 			url: "/PrestadorCadastro",
 			templateUrl: "app/appAdmin/views/Prestador/PrestadorCadastro.html",
 			controller: 'PrestadorCadastroCtrl',

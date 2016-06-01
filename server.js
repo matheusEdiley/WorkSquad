@@ -88,11 +88,9 @@ app.post('/login', function(req, res) {
 app.post('/app/cliente/', function(req, res) {
 
 	var cliente = ClienteController.getClienteSchema();
-	var isUpdate = false;
-	if (req.body._clienteId != undefined) {
+
+	if (req.body._clienteId != undefined)
 		cliente._id = req.body._clienteId;
-		isUpdate = true;
-	}
 
 	cliente.nome = req.body.nome;
 	cliente.sobrenome = req.body.sobrenome;
@@ -106,50 +104,15 @@ app.post('/app/cliente/', function(req, res) {
 	cliente.localidade = req.body.localidade;
 	cliente.uf = req.body.uf;
 	cliente.user = req.body.userid;
+	cliente.servicos = req.body.servicos;
 
 	console.log(cliente);
-	ClienteController.save(cliente, isUpdate, function(clienteret) {
+	ClienteController.save(cliente, function(clienteret) {
 		res.json(clienteret);
 		console.log(clienteret);
 	})
 });
 
-//editar cliente
-app.post('/app/EditarCliente/', function(req, res) {
-
-	var cliente = ClienteController.getClienteSchema();
-
-	if ((req.body._clienteUserId != undefined)) {
-		ClienteController.findOne(req.body._clienteUserId, function(cliente) {
-			if (cliente) {
-				//console.log(cliente);
-
-				//cliente._id = req.body._id;
-				cliente.nome = req.body.nome;
-				cliente.sobrenome = req.body.sobrenome;
-				cliente.cpf = req.body.cpf;
-				cliente.celular = req.body.celular;
-				cliente.telefone = req.body.telefone;
-				cliente.cep = req.body.cep;
-				cliente.numero = req.body.numero;
-				cliente.logradouro = req.body.logradouro;
-				cliente.bairro = req.body.bairro;
-				cliente.localidade = req.body.localidade;
-				cliente.uf = req.body.uf;
-				cliente.user = req.body.userid;
-
-				ClienteController.save(cliente, function(clienteret) {
-					res.json(clienteret);
-					console.log(clienteret);
-				});
-			} else {
-				res.json('erro');
-			}
-		});
-	} else {
-		res.json('erro');
-	}
-});
 
 //buscar por ID/Listar todos os clientes
 app.get('/app/cliente/:id', function(req, res) {
@@ -200,7 +163,8 @@ app.post('/app/servico/', function(req, res) {
 	servico.diasDaSemana = req.body.diasDaSemana;
 	servico.horarioInicio = req.body.horarioInicio;
 	servico.horarioFim = req.body.horarioFim;
-
+	servico.prestador = req.body.prestador;
+	
 	console.log(servico);
 	ServicoController.save(servico, function(servicoret) {
 		res.json(servicoret);
@@ -233,7 +197,7 @@ app.get('/app/servico/', function(req, res) {
 });
 
 //remover serviço
-app.delete('/app/servico/remove', function(req, res) {
+app.post('/app/servico/remove', function(req, res) {
 	var id = req.param('id');
 	if (id != undefined) {
 		ServicoController.remove(id);
@@ -263,6 +227,7 @@ app.post('/app/prestador/', function(req, res) {
 	prestador.localidade = req.body.localidade;
 	prestador.uf = req.body.uf;
 	prestador.user = req.body.userid;
+	prestador.servicos = req.body.servicos;
 
 	console.log(prestador);
 	PrestadorController.save(prestador, function(prestadorret) {
