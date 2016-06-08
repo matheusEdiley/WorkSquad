@@ -13,9 +13,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(bodyParser.json());
-// app.use('/app', function(req, res, next) {
-// 	auth.validaToken(req, res, next);
-// });
+
 
 
 //Inserir usuário
